@@ -30,11 +30,13 @@
             </div>
         </nav>
     </header>
-    <div  class="container mt-4" >
-        <h1 class="text-center" >Funcionários Cadastrados</h1>
+
+    <div class="container mt-4">
+        <h1 class="text-center">Funcionários Cadastrados</h1>
         <form class="d-flex justify-content-center" role="search">
           <input class="form-control me-2" type="search" placeholder="Digite o Nome do usuário" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
+          <button type="button" class="btn btn-outline-success" id="cadastrarFuncionarioBtn">Cadastrar Funcionario</button>
         </form>
         <table class="table mt-4">
           <thead>
@@ -44,34 +46,61 @@
               <th scope="col">CPF</th>
               <th scope="col">Registro</th>
               <th scope="col">Perfil</th>
-              <i class="bi bi-person-fill"></i>
             </tr>
           </thead>
-          <tbody id="tabela-body">
-           
-          </tbody>
+          <tbody id="tabela-body"></tbody>
         </table>  
     </div>
 
-    >
+    <!-- Modal para Cadastrar Funcionário -->
+    <div class="modal fade" id="cadastrarModal" tabindex="-1" aria-labelledby="cadastrarModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="cadastrarModalLabel">Cadastrar Funcionário</h5>
+              </div>
+              <div class="modal-body">
+                  <form id="form-cadastrar">
+                      <div class="mb-3">
+                          <label for="nomeFuncionario" class="form-label">Nome</label>
+                          <input type="text" class="form-control" id="nomeFuncionario" required>
+                      </div>
+                      <div class="mb-3">
+                          <label for="cpfFuncionario" class="form-label">CPF</label>
+                          <input type="text" class="form-control" id="cpfFuncionario" required>
+                      </div>
+                      <div class="mb-3">
+                          <label for="registroFuncionario" class="form-label">Registro</label>
+                          <input type="text" class="form-control" id="registroFuncionario" required>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning" id="salvar-btn">Salvar</button>
+                <button type="button" class="btn btn-danger" id="cancelar-btn">Cancelar</button>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- Modal para Detalhes do Funcionário -->
     <div class="modal fade" id="detalhesModal" tabindex="-1" aria-labelledby="detalhesModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"> 
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="detalhesModalLabel">Detalhes do Funcionário</h5>
-            </div>
-            <div class="modal-body" id="modal-body">
-                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" id="editar-btn">Editar</button>
-                <button type="button" class="btn btn-danger" id="excluir-btn">Excluir</button>
-            </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detalhesModalLabel">Detalhes do Funcionário</h5>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Detalhes do funcionário serão carregados aqui -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="editar-btn">Editar</button>
+                    <button type="button" class="btn btn-danger" id="excluir-btn">Excluir</button>
+                </div>
             </div>
         </div>
     </div>
-      
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="/src/js/script.js"></script>
   </body>
