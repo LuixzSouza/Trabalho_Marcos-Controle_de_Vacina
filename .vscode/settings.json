@@ -1,0 +1,6 @@
+// Config para abrir o Projeto
+{
+    "liveServer.settings.root": "/src",
+    "liveServer.settings.port": 5500
+  }
+  

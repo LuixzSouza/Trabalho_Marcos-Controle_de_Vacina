@@ -5,28 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lista de Vacinas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/src/style/style.css">
+    <link rel="stylesheet" href="/style/style.css">
   </head>
   <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-            <a class="navbar-brand" href="/src/index.html">Navbar</a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                <a class="nav-link active" href="/src/index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/src/pages/TelaListarFuncionarios.html">Listar Funcionario</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="/src/pages/TelaListarVacinas.html">Listar Vacinas</a>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+              <a class="navbar-brand" href="/index.html">
+                <img src="/public/icons/logo_univas_white.png" alt="" class="" style="filter: invert(1);">
+              </a>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                  <a class="nav-link active" href="/index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="/pages/TelaListarFuncionarios.html">Funcionário</a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href="/pages/TelaListarVacinas.html">Vacinas</a>
+                  </li>
+              </ul>
+              <form class="d-flex" role="search" id="headerSearchForm">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
             </div>
         </nav>
     </header>
@@ -37,6 +39,9 @@
         <form class="d-flex justify-content-center mb-3" id="searchForm" role="search">
             <input class="form-control me-2" id="searchInput" type="search" placeholder="Digite o nome da vacina" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalAdicionarVacina">
+              Adicionar Vacina
+          </button>
         </form>
         <table class="table">
             <thead>
@@ -51,6 +56,34 @@
         </table>
     </div>
 
-    <script src="/src/js/scriptVacinas.js" ></script>
+    <!-- Modal -->
+    <div class="modal fade" id="modalAdicionarVacina" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Adicionar Nova Vacina</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body">
+            <form id="formVacina">
+              <div class="mb-3">
+                <label for="registroVacina" class="form-label">Registro</label>
+                <input type="text" class="form-control" id="registroVacina" required>
+              </div>
+              <div class="mb-3">
+                <label for="nomeVacina" class="form-label">Nome da Vacina</label>
+                <input type="text" class="form-control" id="nomeVacina" required>
+              </div>
+              <button type="button" class="btn btn-primary" onclick="adicionarVacina()">Salvar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inclusão do JavaScript do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/scriptVacinas.js"></script>
+    <script src="/js/script.js" ></script>
   </body>
 </html>

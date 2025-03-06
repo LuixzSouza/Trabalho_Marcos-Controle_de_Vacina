@@ -1,5 +1,5 @@
- // Array com os dados das vacinas
- let vacinas = [
+// Array com os dados das vacinas
+let vacinas = [
     { id: 1, nome: "Hepatite B" },
     { id: 2, nome: "BCG" },
     { id: 3, nome: "Febre Amarela" },
@@ -15,7 +15,10 @@ function carregarDados() {
 
     let vacinasFiltradas = vacinas;
     if (searchValue) {
-        vacinasFiltradas = vacinas.filter(vacina => vacina.nome.toLowerCase().includes(searchValue));
+        vacinasFiltradas = vacinas.filter(vacina => 
+            vacina.nome.toLowerCase().includes(searchValue) || 
+            vacina.id.toString().includes(searchValue) // Busca pelo ID
+        );
     }
     
     // Mostrar na tela
@@ -33,18 +36,17 @@ function carregarDados() {
     });
 }
 
-// Função para editar a vacina (exemplo: abrir modal, etc.)
+// Função para editar a vacina
 function editarVacina(id) {
     const vacina = vacinas.find(v => v.id === id);
-    if (vacina && confirm(`Deseja editar -> ${vacina.nome}?`)) {
+    if (vacina) {
       const novoNome = prompt("Digite o novo nome da vacina:", vacina.nome);
       if (novoNome && novoNome.trim() !== "") {
         vacina.nome = novoNome.trim();
         carregarDados(); 
       }
     }
-  }
-  
+}
 
 // Função para excluir a vacina
 function excluirVacina(id) {
@@ -53,17 +55,45 @@ function excluirVacina(id) {
         document.getElementById("searchInput").value = "";
         carregarDados();
     }
+}   
+
+// Função para adicionar vacina
+function adicionarVacina() {
+    const registro = document.getElementById("registroVacina").value.trim();
+    const nome = document.getElementById("nomeVacina").value.trim();
+
+    if (!registro || !nome) {
+        alert("Por favor, preencha todos os campos!");
+        return;
+    }
+
+    const novaVacina = {
+        id: Math.floor(Math.random() * 10000), // Gera um ID aleatório
+        nome: nome
+    };
+
+    vacinas.push(novaVacina);
+    carregarDados();
+
+    // Fechar modal após adicionar vacina
+    let modalElement = document.getElementById("modalAdicionarVacina");
+    let modalInstance = bootstrap.Modal.getInstance(modalElement);
+    modalInstance.hide();
+    
+    // Limpar campos do formulário
+    document.getElementById("formVacina").reset();
 }
 
-// Evento para o formulário de busca: evita o recarregamento da página e chama a função de filtro
+// Evento para busca
 document.getElementById("searchForm").addEventListener("submit", function(event) {
     event.preventDefault();
     carregarDados();
 });
 
-// Atualiza a tabela enquanto o usuário digita (filtro dinâmico)
+// Atualiza a tabela enquanto o usuário digita
 document.getElementById("searchInput").addEventListener("input", function() {
     carregarDados();
 });
 
+// Carrega os dados ao abrir a página
 window.onload = carregarDados;
