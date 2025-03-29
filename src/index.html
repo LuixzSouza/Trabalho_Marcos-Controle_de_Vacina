@@ -9,45 +9,65 @@
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/index.html">
-          <img src="/public/icons/logo_univas_white.png" alt="" class="" style="filter: invert(1);">
-        </a>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="/index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="/pages/TelaListarFuncionarios.html">Funcionário</a></li>
-          <li class="nav-item"><a class="nav-link" href="/pages/TelaListarVacinas.html">Vacinas</a></li>
-          <li class="nav-item"><a class="nav-link" href="/pages/TelaCartaoVacina.html">Cartão Vacina</a></li>
-          <li class="nav-item"><a class="nav-link" href="/pages/TelaRegistroVacina.html">Registro Vacinas</a></li>
-          
-        </ul>
-        <form class="d-flex" role="search" id="headerSearchForm">
-          <input class="form-control me-2" type="search" placeholder="Páginas" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form>
-      </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success py-3">
+        <div class="container-fluid">
+            <a class="" href="/index.html">
+                <img src="/public/icons/logo_univas_white.png" alt="Logo" style="filter: invert(1); width: 150px;">
+            </a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/index.html">Home</a>
+                </li>
+
+                <!-- Dropdown Vacinas -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVacinas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Vacinas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownVacinas">
+                        <li><a class="dropdown-item" href="/pages/TelaListarVacinas.html">Listar Vacinas</a></li>
+                        <li><a class="dropdown-item" href="/pages/TelaCartaoVacina.html">Cartão Vacina</a></li>
+                        <li><a class="dropdown-item" href="/pages/TelaRegistroVacina.html">Registro Vacinas</a></li>
+                        <li><a class="dropdown-item" href="/pages/TelaFiltroVacinas.html">Filtrar Vacinas</a></li>
+                        <li><a class="dropdown-item" href="/pages/TelaAgendamentoVacina.html">Agendamento Vacinas</a></li>
+                    </ul>
+                </li>
+
+                <!-- Outras opções -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVacinas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Funcionário
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownVacinas">
+                      <li><a class="dropdown-item" href="/pages/TelaListarFuncionarios.html">Listar Funcionarios</a></li>
+                  </ul>
+              </li>
+            </ul>
+
+            <form class="d-flex" role="search" id="headerSearchForm">
+                <input class="form-control me-2" type="search" placeholder="Páginas" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Buscar</button>
+            </form>
+        </div>
     </nav>
   </header>
-
+  
   <section>
     <div class="container text-center mt-5">
       <h1>Bem-vindo ao Sistema de Gerenciamento</h1>
       <p class="lead">Gerencie suas vacinas, funcionários e muito mais de forma rápida e prática!</p>
       <form class="d-flex justify-content-center mt-4" role="search" id="mainSearchForm">
-          <input class="form-control w-50" type="search" placeholder="Digite o que deseja buscar..." aria-label="Search">
-          <button class="btn btn-outline-success ms-2" type="submit">Buscar</button>
+        <input class="form-control w-50" type="search" placeholder="Digite o que deseja buscar..." aria-label="Search">
+        <button class="btn btn-outline-success ms-2" type="submit">Buscar</button>
       </form>
     </div>
 
-    <div class="contentIcons container text-center mt-5 d-flex justify-content-center ">
-      <div class="row gy-3 justify-content-center"> 
+    <div class="contentIcons container text-center mt-5 d-flex justify-content-center">
+      <div class="row gy-3 justify-content-center">
         <div class="col-3 d-flex flex-column align-items-center btn-outline-success">
-          <a href="/index.html" class="d-flex flex-column" >
+          <a href="/index.html" class="d-flex flex-column">
             <img src="/public/icons/chamine-de-casa-medica.svg" alt=""> 
-            <span>
-              Início
-            </span>
+            <span>Início</span>
           </a>
         </div>
         <div class="col-3 d-flex flex-column align-items-center btn-outline-success">
@@ -104,7 +124,9 @@
     </div>
   </section>
   
-  <script src="/js/script.js" ></script>
+  <script src="/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

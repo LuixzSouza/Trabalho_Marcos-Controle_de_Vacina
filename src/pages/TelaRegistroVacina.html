@@ -4,59 +4,104 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Registro de Vacina</title>
-    <link rel="stylesheet" href="/src/style/style.css">
+    <!-- Vinculando o CSS do Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Seu CSS personalizado -->
+    <link rel="stylesheet" href="/src/style/style.css">
 </head>
 <body>
+    <!-- Cabeçalho -->
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success py-3">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/index.html">
-                    <img src="/public/icons/logo_univas_white.png" alt="" class="" style="filter: invert(1);">
+                    <img src="/public/icons/logo_univas_white.png" alt="Logo" style="filter: invert(1); width: 150px;">
                 </a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pages/TelaListarFuncionarios.html">Funcionário</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pages/TelaListarVacinas.html">Vacinas</a>
-                    </li>
-                </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/index.html">Home</a>
+                        </li>
+                        <!-- Dropdown Vacinas -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVacinas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Vacinas
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownVacinas">
+                                <li><a class="dropdown-item" href="/pages/TelaListarVacinas.html">Listar Vacinas</a></li>
+                                <li><a class="dropdown-item" href="/pages/TelaCartaoVacina.html">Cartão Vacina</a></li>
+                                <li><a class="dropdown-item" href="/pages/TelaRegistroVacina.html">Registro Vacinas</a></li>
+                                <li><a class="dropdown-item" href="/pages/TelaFiltroVacinas.html">Filtrar Vacinas</a></li>
+                                <li><a class="dropdown-item" href="/pages/TelaAgendamentoVacina.html">Agendamento Vacinas</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown Funcionário -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFuncionario" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Funcionário
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownFuncionario">
+                                <li><a class="dropdown-item" href="/pages/TelaListarFuncionarios.html">Listar Funcionários</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <!-- Barra de pesquisa -->
+                    <form class="d-flex ms-lg-3" role="search" id="headerSearchForm">
+                        <input class="form-control me-2" type="search" placeholder="Páginas" aria-label="Search">
+                        <button class="btn btn-outline-light" type="submit">Buscar</button>
+                    </form>
+                </div>
             </div>
         </nav>
     </header>
     
-    <div class="container mt-4">
-        <h2 class="text-center">Registro de Vacina</h2>
-        <form id="form-registro-vacina" class="mt-4">
-            <div class="mb-3">
-                <label for="funcionarioVacinado" class="form-label">Funcionário Vacinado</label>
-                <input type="text" class="form-control" id="funcionarioVacinado" placeholder="Nome do Funcionário" required>
+    <!-- Conteúdo principal -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card" >
+                    <div class="card-header text-center p-2" >
+                        <h2 class="text-center">Registro de Vacina</h2>
+                    </div>
+                    <form id="form-registro-vacina" class="mt-4 p-2">
+                        <div class="mb-3">
+                            <label for="funcionarioVacinado" class="form-label">Funcionário Vacinado</label>
+                            <input type="text" class="form-control" id="funcionarioVacinado" placeholder="Nome do Funcionário" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="responsavel" class="form-label">Responsável</label>
+                            <input type="text" class="form-control" id="responsavel" placeholder="Nome do Responsável" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dataAplicacao" class="form-label">Data de Aplicação</label>
+                            <input type="date" class="form-control" id="dataAplicacao" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipoVacina" class="form-label">Tipo de Vacina</label>
+                            <select class="form-select" id="tipoVacina" required>
+                                <option value="">Selecione a vacina</option>
+                                <option value="Covid-19">Covid-19</option>
+                                <option value="Influenza">Influenza</option>
+                                <option value="Hepatite B">Hepatite B</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Registrar Vacina</button>
+                    </form>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="responsavel" class="form-label">Responsável</label>
-                <input type="text" class="form-control" id="responsavel" placeholder="Nome do Responsável" required>
-            </div>
-            <div class="mb-3">
-                <label for="dataAplicacao" class="form-label">Data de Aplicação</label>
-                <input type="date" class="form-control" id="dataAplicacao" required>
-            </div>
-            <div class="mb-3">
-                <label for="tipoVacina" class="form-label">Tipo de Vacina</label>
-                <select class="form-select" id="tipoVacina" required>
-                    <option value="">Selecione a vacina</option>
-                    <option value="Covid-19">Covid-19</option>
-                    <option value="Influenza">Influenza</option>
-                    <option value="Hepatite B">Hepatite B</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-success">Registrar Vacina</button>
-        </form>
+        </div>
     </div>
-    
-    <script src="/js/scritRegistroVacinas.js" ></script>
+
+    <!-- Scripts -->
+    <script src="/js/script.js"></script>
+    <script src="/js/scritRegistroVacinas.js"></script>
+
+    <!-- Script do Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

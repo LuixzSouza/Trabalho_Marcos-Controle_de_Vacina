@@ -7,16 +7,10 @@ const funcionarios = [
     { id: 6, nome: "Luiz Antônio", cpf: "221.789.886-00", registro: "412895" },
 ];
 
-document.getElementById("cadastrarFuncionarioBtn").addEventListener("click", () => {
-    // Mostrar o modal de cadastro ao clicar no botão
-    const cadastroModal = new bootstrap.Modal(document.getElementById("cadastrarModal"));
-    cadastroModal.show();
-});
-
-// Função para carregar os dados na tabela
+// Função para carregar os funcionários na tabela
 function carregarDados() {
     const tabelaBody = document.getElementById("tabela-body");
-    tabelaBody.innerHTML = ''; // Limpa a tabela antes de adicionar novos dados
+    tabelaBody.innerHTML = ''; // Limpa a tabela antes de carregar os dados novamente
     funcionarios.forEach(funcionario => {
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -25,28 +19,41 @@ function carregarDados() {
             <td>${funcionario.cpf}</td>
             <td>${funcionario.registro}</td>
             <td>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle perfil-icon" viewBox="0 0 16 16" data-id="${funcionario.id}">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                </svg>
+                <button class="btn btn-info btn-sm" data-id="${funcionario.id}">
+                    <i class="bi bi-person-circle"></i> Detalhes
+                </button>
+                <button class="btn btn-danger btn-sm ms-2" data-id="${funcionario.id}">
+                    <i class="bi bi-trash"></i> Excluir
+                </button>
             </td>
         `;
         tabelaBody.appendChild(row);
     });
-    adicionarEventosPerfil();
+    adicionarEventosPerfil(); // Adiciona eventos aos botões de detalhes
+    adicionarEventosExcluir(); // Adiciona eventos aos botões de excluir
 }
 
-// Adiciona eventos de clique no ícone de perfil
+// Função para adicionar os eventos aos botões de detalhes
 function adicionarEventosPerfil() {
-    document.querySelectorAll(".perfil-icon").forEach(icon => {
-        icon.addEventListener("click", (event) => {
+    document.querySelectorAll(".btn-info").forEach(button => {
+        button.addEventListener("click", (event) => {
             const id = event.target.getAttribute("data-id");
             mostrarDetalhes(id);
         });
     });
 }
 
-// Função para mostrar detalhes do funcionário
+// Função para adicionar os eventos aos botões de exclusão
+function adicionarEventosExcluir() {
+    document.querySelectorAll(".btn-danger").forEach(button => {
+        button.addEventListener("click", (event) => {
+            const id = event.target.getAttribute("data-id");
+            excluirFuncionario(id);
+        });
+    });
+}
+
+// Função para mostrar os detalhes do funcionário
 function mostrarDetalhes(id) {
     const funcionario = funcionarios.find(f => f.id == id);
     if (funcionario) {
@@ -56,14 +63,26 @@ function mostrarDetalhes(id) {
             <p><strong>CPF:</strong> ${funcionario.cpf}</p>
             <p><strong>Registro:</strong> ${funcionario.registro}</p>
         `;
-        
-        // Mostrar o modal de detalhes
         const modalDetalhes = new bootstrap.Modal(document.getElementById("detalhesModal"));
         modalDetalhes.show();
     }
 }
 
-// Função para salvar o novo funcionário
+// Função para excluir um funcionário
+function excluirFuncionario(id) {
+    // Confirmação antes de excluir
+    const confirmacao = confirm("Tem certeza de que deseja excluir este funcionário?");
+    if (confirmacao) {
+        // Remove o funcionário da lista
+        const index = funcionarios.findIndex(f => f.id == id);
+        if (index !== -1) {
+            funcionarios.splice(index, 1);
+            carregarDados(); // Recarrega a tabela após exclusão
+        }
+    }
+}
+
+// Função para adicionar um novo funcionário
 document.getElementById("salvar-btn").addEventListener("click", () => {
     const nome = document.getElementById("nomeFuncionario").value;
     const cpf = document.getElementById("cpfFuncionario").value;
@@ -71,59 +90,34 @@ document.getElementById("salvar-btn").addEventListener("click", () => {
 
     if (nome && cpf && registro) {
         const novoFuncionario = {
-            id: funcionarios.length + 1,  // Atribui um novo ID (incrementa o maior ID)
+            id: funcionarios.length + 1,
             nome,
             cpf,
             registro
         };
 
-        funcionarios.push(novoFuncionario);  // Adiciona o novo funcionário à lista
-        carregarDados();  // Recarrega a tabela
+        funcionarios.push(novoFuncionario);
+        carregarDados();
 
-        // Fecha o modal de cadastro
         const cadastroModal = bootstrap.Modal.getInstance(document.getElementById("cadastrarModal"));
         cadastroModal.hide();
 
-        // Limpa o formulário
         document.getElementById("form-cadastrar").reset();
     } else {
         alert("Por favor, preencha todos os campos!");
     }
 });
 
-document.getElementById("editar-btn").addEventListener("click", () => {
-    const modalBody = document.getElementById("modal-body");
-    const nome = modalBody.querySelector("p:nth-child(2)").textContent.split(": ")[1];
-    const cpf = modalBody.querySelector("p:nth-child(3)").textContent.split(": ")[1];
-    const registro = modalBody.querySelector("p:nth-child(4)").textContent.split(": ")[1];
-
-    document.getElementById("nomeFuncionario").value = nome;
-    document.getElementById("cpfFuncionario").value = cpf;
-    document.getElementById("registroFuncionario").value = registro;
-
-    // Fechar modal de detalhes
-    const detalhesModal = bootstrap.Modal.getInstance(document.getElementById("detalhesModal"));
-    detalhesModal.hide();
-
-    // Abrir modal de edição
-    const cadastroModal = new bootstrap.Modal(document.getElementById("cadastrarModal"));
-    cadastroModal.show();
-});
-
+// Função de busca na tabela
 document.getElementById("searchInput").addEventListener("input", function () {
     const searchText = this.value.toLowerCase();
     const rows = document.querySelectorAll("#tabela-body tr");
 
     rows.forEach(row => {   
         const nome = row.children[1].textContent.toLowerCase();
-        if (nome.includes(searchText)) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
+        row.style.display = nome.includes(searchText) ? "" : "none";
     });
 });
 
-
-// Carregar os dados ao carregar a página
+// Carrega os dados ao carregar a página
 window.onload = carregarDados;

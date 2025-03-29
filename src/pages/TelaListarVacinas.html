@@ -9,54 +9,81 @@
   </head>
   <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="/index.html">
-                <img src="/public/icons/logo_univas_white.png" alt="" class="" style="filter: invert(1);">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-success py-3">
+          <div class="container-fluid">
+              <a class="" href="/index.html">
+                  <img src="/public/icons/logo_univas_white.png" alt="Logo" style="filter: invert(1); width: 150px;">
               </a>
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                  <a class="nav-link active" href="/index.html">Home</a>
+                      <a class="nav-link active" href="/index.html">Home</a>
                   </li>
-                  <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="/pages/TelaListarFuncionarios.html">Funcionário</a>
+  
+                  <!-- Dropdown Vacinas -->
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVacinas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Vacinas
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownVacinas">
+                          <li><a class="dropdown-item" href="/pages/TelaListarVacinas.html">Listar Vacinas</a></li>
+                          <li><a class="dropdown-item" href="/pages/TelaCartaoVacina.html">Cartão Vacina</a></li>
+                          <li><a class="dropdown-item" href="/pages/TelaRegistroVacina.html">Registro Vacinas</a></li>
+                          <li><a class="dropdown-item" href="/pages/TelaFiltroVacinas.html">Filtrar Vacinas</a></li>
+                          <li><a class="dropdown-item" href="/pages/TelaAgendamentoVacina.html">Agendamento Vacinas</a></li>
+                      </ul>
                   </li>
-                  <li class="nav-item">
-                  <a class="nav-link" href="/pages/TelaListarVacinas.html">Vacinas</a>
-                  </li>
+  
+                  <!-- Outras opções -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVacinas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Funcionário
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownVacinas">
+                        <li><a class="dropdown-item" href="/pages/TelaListarFuncionarios.html">Listar Funcionarios</a></li>
+                    </ul>
+                </li>
               </ul>
+  
               <form class="d-flex" role="search" id="headerSearchForm">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
+                  <input class="form-control me-2" type="search" placeholder="Páginas" aria-label="Search">
+                  <button class="btn btn-outline-light" type="submit">Buscar</button>
               </form>
-            </div>
-        </nav>
+          </div>
+      </nav>
     </header>
 
-    <div class="container mt-4">
-        <h1 class="text-center" >Vacinas Cadastradas</h1>
-        
-        <form class="d-flex justify-content-center mb-3" id="searchForm" role="search">
-            <input class="form-control me-2" id="searchInput" type="search" placeholder="Digite o nome da vacina" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
-            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalAdicionarVacina">
-              Adicionar Vacina
-          </button>
-        </form>
-        <table class="table">
-            <thead>
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">Vacinas Cadastradas</h1>
+      
+      <!-- Formulário de Busca -->
+      <form class="d-flex justify-content-center mb-3" id="searchForm" role="search">
+        <div class="input-group w-50">
+          <input class="form-control" id="searchInput" type="search" placeholder="Digite o nome da vacina" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </div>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionarVacina">
+          <i class="bi bi-plus-circle"></i> Adicionar Vacina
+        </button>
+      </form>
+
+      <!-- Tabela de Vacinas -->
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead class="table-success">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome da Vacina</th>
-                <th scope="col">Ações</th>
+              <th scope="col">#</th>
+              <th scope="col">Nome da Vacina</th>
+              <th scope="col">Ações</th>
             </tr>
-            </thead>
-            <tbody id="tabela-body">
-            </tbody>
+          </thead>
+          <tbody id="tabela-body">
+            <!-- Dados da tabela serão carregados via JavaScript -->
+          </tbody>
         </table>
+      </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Adicionar Vacina -->
     <div class="modal fade" id="modalAdicionarVacina" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -84,6 +111,6 @@
     <!-- Inclusão do JavaScript do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/scriptVacinas.js"></script>
-    <script src="/js/script.js" ></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>
