@@ -91,5 +91,39 @@ document.getElementById("salvar-btn").addEventListener("click", () => {
     }
 });
 
+document.getElementById("editar-btn").addEventListener("click", () => {
+    const modalBody = document.getElementById("modal-body");
+    const nome = modalBody.querySelector("p:nth-child(2)").textContent.split(": ")[1];
+    const cpf = modalBody.querySelector("p:nth-child(3)").textContent.split(": ")[1];
+    const registro = modalBody.querySelector("p:nth-child(4)").textContent.split(": ")[1];
+
+    document.getElementById("nomeFuncionario").value = nome;
+    document.getElementById("cpfFuncionario").value = cpf;
+    document.getElementById("registroFuncionario").value = registro;
+
+    // Fechar modal de detalhes
+    const detalhesModal = bootstrap.Modal.getInstance(document.getElementById("detalhesModal"));
+    detalhesModal.hide();
+
+    // Abrir modal de edição
+    const cadastroModal = new bootstrap.Modal(document.getElementById("cadastrarModal"));
+    cadastroModal.show();
+});
+
+document.getElementById("searchInput").addEventListener("input", function () {
+    const searchText = this.value.toLowerCase();
+    const rows = document.querySelectorAll("#tabela-body tr");
+
+    rows.forEach(row => {
+        const nome = row.children[1].textContent.toLowerCase();
+        if (nome.includes(searchText)) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
+});
+
+
 // Carregar os dados ao carregar a página
 window.onload = carregarDados;
