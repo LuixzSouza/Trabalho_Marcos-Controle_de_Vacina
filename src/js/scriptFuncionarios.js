@@ -114,7 +114,7 @@ document.getElementById("searchInput").addEventListener("input", function () {
     const searchText = this.value.toLowerCase();
     const rows = document.querySelectorAll("#tabela-body tr");
 
-    rows.forEach(row => {
+    rows.forEach(row => {   
         const nome = row.children[1].textContent.toLowerCase();
         if (nome.includes(searchText)) {
             row.style.display = "";
