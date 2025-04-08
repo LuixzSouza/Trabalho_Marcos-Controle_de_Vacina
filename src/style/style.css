@@ -6,6 +6,14 @@
     outline: none;
 }
 
+body {
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../public/bg-all.png");
+}
+
 button {
     cursor: pointer;
     border: 0;
@@ -32,9 +40,32 @@ a:hover {
     
 }
 
+header {
+    padding: 16px 0 16px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: hsla(122, 63%, 27%, 0.866) ;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+    border-bottom: 1px solid white;
+}
+
+.header-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+  }
+  
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+  
+
 .form-control {
     width: 100%;
-    max-width: 500px;
 }
 
 .container-fluid  {
@@ -47,33 +78,72 @@ a:hover {
     height: 24px;
 }
 
-/* Home */
-.contentIcons .col-3 {
-    width: 100%; /* Defina um tamanho fixo para cada item */
-    max-width: 170px;
-    text-align: center;
-    padding: 26px;
-    border: 1px solid #28a745;
-    cursor: pointer;
-}
+.navbar-nav img {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+    filter: invert(1);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+  }
 
-.contentIcons a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-}
-
-.contentIcons img {
-    width: 50px;  /* Tamanho fixo para todos os ícones */
-    height: 50px; /* Mantém a proporção */
-    margin-bottom: 5px;
-}
-
-.contentIcons span {
-    font-size: 14px; /* Define um tamanho fixo para os textos */
-    white-space: nowrap; /* Evita que o texto quebre */
-}
+  .navbar-nav li:hover img {
+    opacity: 1;
+  }
 /* Home */
 
+.s-home {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../public/bg-vacinas.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contentIcons {
+    position: relative;
+    width: 500px;
+    height: 200px;
+}
+
+.s-home .contentIcons .div-flut {
+    pointer-events: none; /* para evitar clique neles */
+    z-index: 10;
+}
+
+.s-home .contentIcons .div-flut .flut-icon {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Posicionamento circular (semelhante à imagem enviada) */
+.icon1 {
+    top: 0;
+    left: 50%;
+    transform: translateX(-80%);
+}
+
+.icon2 {
+    top: 60%;
+    left: 0;
+    transform: translateY(-30%);
+}
+
+.icon3 {
+    top: 60%;
+    left: 100%;
+    transform: translate(-100%, -60%);
+}
+
+/* Animação suave de flutuação */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1.05);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1);
+    }
+}

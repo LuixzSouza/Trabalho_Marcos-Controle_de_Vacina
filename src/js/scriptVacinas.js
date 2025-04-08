@@ -1,98 +1,117 @@
-// Array com os dados das vacinas
-let vacinas = [
-    { id: 1, nome: "Hepatite B" },
-    { id: 2, nome: "BCG" },
-    { id: 3, nome: "Febre Amarela" },
-    { id: 4, nome: "Tríplice Viral" },
-    { id: 5, nome: "Covid-19" }
-];
+const apiURL = "http://localhost:3000/vacinas";
 
-function carregarDados() {
-    const tabelaBody = document.getElementById("tabela-body");
-    tabelaBody.innerHTML = "";
+// Função para carregar vacinas da API e exibir na tabela
+async function carregarDados() {
+  const tabelaBody = document.getElementById("tabela-body");
+  tabelaBody.innerHTML = "";
 
-    const searchValue = document.getElementById("searchInput").value.toLowerCase();
+  const searchValue = document.getElementById("searchInput").value.toLowerCase();
 
-    let vacinasFiltradas = vacinas;
+  try {
+    const resposta = await fetch(apiURL);
+    let vacinas = await resposta.json();
+
     if (searchValue) {
-        vacinasFiltradas = vacinas.filter(vacina => 
-            vacina.nome.toLowerCase().includes(searchValue) || 
-            vacina.id.toString().includes(searchValue) // Busca pelo ID
-        );
+      vacinas = vacinas.filter(vacina =>
+        vacina.nome.toLowerCase().includes(searchValue) ||
+        vacina.id.toString().includes(searchValue)
+      );
     }
-    
-    // Mostrar na tela
-    vacinasFiltradas.forEach(vacina => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <th scope="row">${vacina.id}</th>
-            <td>${vacina.nome}</td>
-            <td>
-              <button class="btn btn-warning btn-sm" onclick="editarVacina(${vacina.id})">✏️</button>
-              <button class="btn btn-danger btn-sm" onclick="excluirVacina(${vacina.id})">🗑️</button>
-            </td>
-        `;
-        tabelaBody.appendChild(row);
+
+    vacinas.forEach(vacina => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <th scope="row">${vacina.id}</th>
+        <td>${vacina.nome}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" onclick="editarVacina(${vacina.id}, '${vacina.nome}')">✏️</button>
+          <button class="btn btn-danger btn-sm" onclick="excluirVacina(${vacina.id})">🗑️</button>
+        </td>
+      `;
+      tabelaBody.appendChild(row);
     });
+  } catch (error) {
+    console.error("Erro ao carregar vacinas:", error);
+  }
 }
-
-// Função para editar a vacina
-function editarVacina(id) {
-    const vacina = vacinas.find(v => v.id === id);
-    if (vacina) {
-      const novoNome = prompt("Digite o novo nome da vacina:", vacina.nome);
-      if (novoNome && novoNome.trim() !== "") {
-        vacina.nome = novoNome.trim();
-        carregarDados(); 
-      }
-    }
-}
-
-// Função para excluir a vacina
-function excluirVacina(id) {
-    if (confirm(`Deseja realmente excluir a vacina de ID ${id}?`)) {
-        vacinas = vacinas.filter(vacina => vacina.id !== id);
-        document.getElementById("searchInput").value = "";
-        carregarDados();
-    }
-}   
 
 // Função para adicionar vacina
-function adicionarVacina() {
-    const registro = document.getElementById("registroVacina").value.trim();
-    const nome = document.getElementById("nomeVacina").value.trim();
+async function adicionarVacina() {
+  const registro = document.getElementById("registroVacina").value.trim();
+  const nome = document.getElementById("nomeVacina").value.trim();
 
-    if (!registro || !nome) {
-        alert("Por favor, preencha todos os campos!");
-        return;
-    }
+  if (!registro || !nome) {
+    alert("Por favor, preencha todos os campos!");
+    return;
+  }
 
-    const novaVacina = {
-        id: Math.floor(Math.random() * 10000), // Gera um ID aleatório
-        nome: nome
-    };
+  const novaVacina = {
+    nome: nome,
+    registro: registro
+  };
 
-    vacinas.push(novaVacina);
+  try {
+    await fetch(apiURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(novaVacina)
+    });
+
     carregarDados();
 
-    // Fechar modal após adicionar vacina
-    let modalElement = document.getElementById("modalAdicionarVacina");
-    let modalInstance = bootstrap.Modal.getInstance(modalElement);
-    modalInstance.hide();
-    
-    // Limpar campos do formulário
+    // Fechar modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById("modalAdicionarVacina"));
+    modal.hide();
+
     document.getElementById("formVacina").reset();
+  } catch (error) {
+    console.error("Erro ao adicionar vacina:", error);
+  }
+}
+
+// Função para editar vacina
+async function editarVacina(id, nomeAtual) {
+  const novoNome = prompt("Digite o novo nome da vacina:", nomeAtual);
+  if (!novoNome || novoNome.trim() === "") return;
+
+  try {
+    await fetch(`${apiURL}/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome: novoNome.trim() })
+    });
+
+    carregarDados();
+  } catch (error) {
+    console.error("Erro ao editar vacina:", error);
+  }
+}
+
+// Função para excluir vacina
+async function excluirVacina(id) {
+  if (!confirm(`Deseja realmente excluir a vacina de ID ${id}?`)) return;
+
+  try {
+    await fetch(`${apiURL}/${id}`, {
+      method: "DELETE"
+    });
+
+    document.getElementById("searchInput").value = "";
+    carregarDados();
+  } catch (error) {
+    console.error("Erro ao excluir vacina:", error);
+  }
 }
 
 // Evento para busca
 document.getElementById("searchForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    carregarDados();
+  event.preventDefault();
+  carregarDados();
 });
 
 // Atualiza a tabela enquanto o usuário digita
 document.getElementById("searchInput").addEventListener("input", function() {
-    carregarDados();
+  carregarDados();
 });
 
 // Carrega os dados ao abrir a página

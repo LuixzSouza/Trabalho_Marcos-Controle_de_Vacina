@@ -1,0 +1,172 @@
+{
+  "funcionarios": [
+  {
+    "id": 1,
+    "nome": "João Silva",
+    "cpf": "123.456.789-00",
+    "senha": "1234",
+    "registro": "FUNC001",
+    "email": "joao.silva@email.com",
+    "telefone": "(11) 91234-5678",
+    "secao": "Vacinação"
+  },
+  {
+    "id": 2,
+    "nome": "Maria Oliveira",
+    "cpf": "987.654.321-00",
+    "senha": "1234",
+    "registro": "FUNC002",
+    "email": "maria.oliveira@email.com",
+    "telefone": "(21) 99876-5432",
+    "secao": "Atendimento"
+  },
+  {
+    "id": 3,
+    "nome": "Carlos Souza",
+    "cpf": "456.789.123-00",
+    "senha": "1234",
+    "registro": "FUNC003",
+    "email": "carlos.souza@email.com",
+    "telefone": "(31) 98765-4321",
+    "secao": "Administração"
+  },
+  {
+    "id": 4,
+    "nome": "Renan Carlos",
+    "cpf": "321.231.221-00",
+    "senha": "1234",
+    "registro": "FUNC004",
+    "email": "renan.carlos@email.com",
+    "telefone": "(41) 98888-7777",
+    "secao": "Suporte"
+  },
+  {
+    "id": 5,
+    "nome": "Itallo Andrade",
+    "cpf": "231.212.312-00",
+    "senha": "1234",
+    "registro": "FUNC005",
+    "email": "itallo.andrade@email.com",
+    "telefone": "(71) 97777-6666",
+    "secao": "Financeiro"
+  },
+  {
+    "id": 6,
+    "nome": "Luiz Antônio",
+    "cpf": "221.789.886-00",
+    "senha": "1234",
+    "registro": "FUNC006",
+    "email": "luiz.antonio@email.com",
+    "telefone": "(85) 96666-5555",
+    "secao": "Desenvolvimento"
+  }
+  ],
+  "vacinas": [
+    {
+      "id": "VAC001",
+      "nome": "Covid-19",
+      "fabricante": "Pfizer",
+      "registro": "REG123"
+    },
+    {
+      "id": "VAC002",
+      "nome": "Influenza",
+      "fabricante": "Butantan",
+      "registro": "REG456"
+    },
+    {
+      "id": "VAC003",
+      "nome": "Tétano",
+      "fabricante": "Fiocruz",
+      "registro": "REG789"
+    }
+  ],
+  "agendamentos": [
+    {
+      "id": "AG001",
+      "nomePaciente": "Luiz Antônio",
+      "tipoVacina": "Covid-19",
+      "localVacinacao": "Posto Central - Itajubá",
+      "dataVacinacao": "2025-05-10"
+    },
+    {
+      "id": "AG002",
+      "nomePaciente": "Renan Carlos",
+      "tipoVacina": "Influenza",
+      "localVacinacao": "Unidade de Saúde - Bairro Sul",
+      "dataVacinacao": "2025-05-12"
+    }
+  ],
+  "registros": [
+    {
+      "id": "REG001",
+      "funcionario": "João Silva",
+      "responsavel": "Maria Oliveira",
+      "dataAplicacao": "2025-03-15",
+      "tipoVacina": "Covid-19"
+    },
+    {
+      "id": "REG002",
+      "funcionario": "Carlos Souza",
+      "responsavel": "João Silva",
+      "dataAplicacao": "2025-03-20",
+      "tipoVacina": "Tétano"
+    }
+  ],
+  "cartaoVacina": [
+  {
+    "id": 1,
+    "tipoVacina": "Hepatite B",
+    "dataAplicacao": "2025-04-08",
+    "responsavel": "Enfermeira Ana",
+    "lote": "L12345HB",
+    "funcionario": "Luiz Antônio",
+    "status": "aplicada"
+  },
+  {
+    "id": 2,
+    "tipoVacina": "Febre Amarela",
+    "dataAplicacao": "2025-04-08",
+    "responsavel": "Enfermeiro João",
+    "lote": "L56789FA",
+    "funcionario": "Carlos Souza",
+    "status": "aplicada"
+  },
+  {
+    "id": 3,
+    "tipoVacina": "Covid-19",
+    "dataAplicacao": "2025-04-09",
+    "responsavel": "Dra. Helena",
+    "lote": "L89012CV",
+    "funcionario": "João Silva",
+    "status": "aplicada"
+  },
+  {
+    "id": 4,
+    "tipoVacina": "Tétano",
+    "dataAplicacao": "2025-04-10",
+    "responsavel": "Enfermeira Paula",
+    "lote": "L45678TT",
+    "funcionario": "Maria Oliveira",
+    "status": "aplicada"
+  },
+  {
+    "id": 5,
+    "tipoVacina": "Influenza",
+    "dataAplicacao": "2025-04-11",
+    "responsavel": "Dr. Marcos",
+    "lote": "L65432IF",
+    "funcionario": "Renan Carlos",
+    "status": "aplicada"
+  },
+  {
+    "id": 6,
+    "tipoVacina": "BCG",
+    "dataAplicacao": "2025-04-12",
+    "responsavel": "Enfermeira Carla",
+    "lote": "L32109BC",
+    "funcionario": "Itallo Andrade",
+    "status": "aplicada"
+  }
+  ]
+}

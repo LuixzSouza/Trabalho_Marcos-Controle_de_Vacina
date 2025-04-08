@@ -1,42 +1,68 @@
-document.getElementById('form-registro-vacina').addEventListener('submit', function(event) {
-    // Previne o envio do formulário para poder validar os campos primeiro
-    event.preventDefault();
+// Registrando Vacinas
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('form-registro-vacina');
 
-    // Obtém os valores dos campos
-    const funcionarioVacinado = document.getElementById('funcionarioVacinado').value.trim();
-    const responsavel = document.getElementById('responsavel').value.trim();
-    const dataAplicacao = document.getElementById('dataAplicacao').value.trim();
-    const tipoVacina = document.getElementById('tipoVacina').value.trim();
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-    // Flag de validação
-    let valid = true;
+        const funcionarioVacinado = document.getElementById('funcionarioVacinado').value.trim();
+        const responsavel = document.getElementById('responsavel').value.trim();
+        const dataAplicacao = document.getElementById('dataAplicacao').value;
+        const tipoVacina = document.getElementById('tipoVacina').value.trim();
 
-    // Validação dos campos
-    if (!funcionarioVacinado) {
-        alert("O nome do funcionário vacinado é obrigatório!");
-        valid = false;
-    }
-    
-    if (!responsavel) {
-        alert("O nome do responsável é obrigatório!");
-        valid = false;
-    }
-    
-    if (!dataAplicacao) {
-        alert("A data de aplicação é obrigatória!");
-        valid = false;
-    }
-    
-    if (!tipoVacina) {
-        alert("O tipo de vacina é obrigatório!");
-        valid = false;
-    }
+        if (!funcionarioVacinado || !responsavel || !dataAplicacao || !tipoVacina) {
+        alert("Preencha todos os campos obrigatórios!");
+        return;
+        }
 
-    // Se todos os campos estiverem válidos, envia o formulário
-    if (valid) {
-        // Aqui você pode enviar os dados ou processá-los como necessário
+        const dadosVacina = {
+        funcionario: funcionarioVacinado,
+        responsavel: responsavel,
+        dataAplicacao: dataAplicacao,
+        tipoVacina: tipoVacina
+        };
+
+        try {
+        const response = await fetch('http://localhost:3000/registros', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dadosVacina)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erro ao registrar: ${response.status}`);
+        }
+
+        const resposta = await response.json();
+        console.log("Resposta do servidor:", resposta);
+
         alert("Vacina registrada com sucesso!");
-        // Para fins de exemplo, podemos limpar o formulário
-        document.getElementById('form-registro-vacina').reset();
+        form.reset();
+        } catch (error) {
+        console.error("Erro:", error);
+        alert("Erro ao registrar a vacina. Verifique se o servidor está ativo.");
+        }
+    });
+});
+
+// Pegando nomes do Funcionarios
+document.addEventListener('DOMContentLoaded', async () => {
+    const funcionarioSelect = document.getElementById('funcionarioVacinado');
+
+    try {
+        const response = await fetch('http://localhost:3000/funcionarios');
+        const funcionarios = await response.json();
+
+        funcionarios.forEach(func => {
+            const option = document.createElement('option');
+            option.value = func.nome; // ou func.id, dependendo de como você quer salvar
+            option.textContent = func.nome;
+            funcionarioSelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Erro ao carregar funcionários:", error);
+        alert("Não foi possível carregar os funcionários. Verifique o servidor.");
     }
 });
