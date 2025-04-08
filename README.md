@@ -1,27 +1,29 @@
-# Gerenciador de Vacinas
+# 👨‍⚕️ Gerenciador de Vacinas
 
 O objetivo deste projeto é desenvolver um **sistema completo para a gestão de funcionários e o controle de vacinas**, contemplando as seguintes funcionalidades:
 
-## Como rodar:
+## 🚀 Como rodar o projeto
 
 ```bash
 # Acessar pasta do Projeto
 cd ./[CAMINHO] # Tab para aparecer
 
 # Instalar pacotes
-npm instal
+npm install
 
 # Instalar Json Server
 npm install -g json-server
 
-# Rodar o Projeto na porta 3000
+# Rodar o Projeto na porta 3000 (para utilizar o JSON Server)
+set PORT=3000 && npm start       # Windows
+PORT=3000 npm start              # Linux / macOS
 
 # Rodar Json Server
 json-server --watch src/api/data/db.json --port 3000
 
 ```
 
-## Desenvolvedores:
+## 👨‍💻 Desenvolvedores
 
 Luiz Antônio de Souza: 
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/luiz-antonio-souza-5000a226b/)
@@ -39,17 +41,17 @@ Italo Andrade:
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/italloandrade)
 
 
-## Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 - HTML
 - CSS
 - JavaScript
 - BootStrap
 - Node.js
 
-### **Site do Projeto:**
-Acesse o site do projeto
+### 💻 Acesse o site do projeto:
+👉 [Clique aqui para acessar o site](https://SEU-LINK-AQUI)
 
-## Cronograma e Entregas
+## 📅 Cronograma e Entregas
 
 ### Entrega 01 (05/03/2025)
 #### Simulação de dados: Construção de arrays simulando os dados vindos de uma base.
@@ -72,23 +74,24 @@ Acesse o site do projeto
 
 - Uso de API para listagens: Buscar e exibir dados reais para funcionários e vacinas.
 
-## Divisão de Tarefas (Equipe)
+## 🧠 Divisão de Tarefas (Equipe)
 Renan Carlos:
 
 - Responsável pela Tela para Cadastro de Funcionários.
 - Filtro de pesquisa na listagem de funcionários.
 - Validação dos formulários (registro de vacina e agendamento) no evento submit.
+- Teste da API (Corrigir Bug)
 
 Itallo Andrade:
 
 - Responsável pela Tela para Cadastro de Funcionários.
 - Desenvolvimento da tela de registro da vacina.
 - Criação da tela do cartão de vacina, com histórico das vacinas aplicadas.
+- Teste da API (Corrigir Bug)
 
 Luiz Antônio:
 
 - Responsável pela Tela para tipo de Vacina.
 - Desenvolvimento da tela de agendamento de vacina com validação de data.
 - Criação da tela para filtragem dos tipos de vacina, incluindo o tempo para a próxima aplicação.
-
-**Observação: Ainda será implementada a API. O código atual utiliza arrays simulados para representar os dados, mas já deve ser preparado para a integração futura.**
+- Integração da API
