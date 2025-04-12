@@ -143,6 +143,51 @@
             </div>
         </div>
     </div>
+    
+    <!-- Modal para Editar Funcionário -->
+<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editarModalLabel">Editar Funcionário</h5>
+        </div>
+        <div class="modal-body">
+          <form id="form-editar">
+            <input type="hidden" id="editarId">
+            <div class="mb-3">
+              <label for="editarNome" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="editarNome" required>
+            </div>
+            <div class="mb-3">
+              <label for="editarCpf" class="form-label">CPF</label>
+              <input type="text" class="form-control" id="editarCpf" required>
+            </div>
+            <div class="mb-3">
+              <label for="editarRegistro" class="form-label">Registro</label>
+              <input type="text" class="form-control" id="editarRegistro" required>
+            </div>
+            <div class="mb-3">
+              <label for="editarEmail" class="form-label">E-mail</label>
+              <input type="email" class="form-control" id="editarEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="editarTelefone" class="form-label">Telefone</label>
+              <input type="text" class="form-control" id="editarTelefone" required>
+            </div>
+            <div class="mb-3">
+              <label for="editarSecao" class="form-label">Seção</label>
+              <input type="text" class="form-control" id="editarSecao" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="salvarEdicaoBtn">Salvar Alterações</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../js/scriptFuncionarios.js"></script>
