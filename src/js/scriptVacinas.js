@@ -4,15 +4,13 @@ const apiURL = "http://localhost:3000/vacinas";
 async function carregarDados() {
   const tabelaBody = document.getElementById("tabela-body");
   tabelaBody.innerHTML = "";
-
   const searchValue = document.getElementById("searchInput").value.toLowerCase();
 
   try {
     const resposta = await fetch(apiURL);
     let vacinas = await resposta.json();
-
     if (searchValue) {
-      vacinas = vacinas.filter(vacina =>
+      vacinas = vacinas.filter(vacina =>  
         vacina.nome.toLowerCase().includes(searchValue) ||
         vacina.id.toString().includes(searchValue)
       );
@@ -21,21 +19,23 @@ async function carregarDados() {
     vacinas.forEach(vacina => {
       const row = document.createElement("tr");
       row.innerHTML = `
-        <th scope="row">${vacina.id}</th>
-        <td>${vacina.nome}</td>
-        <td>
-          <button class="btn btn-warning btn-sm" onclick="editarVacina(${vacina.id}, '${vacina.nome}')">✏️</button>
-          <button class="btn btn-danger btn-sm" onclick="excluirVacina(${vacina.id})">🗑️</button>
-        </td>
-      `;
+  <th scope="row">${vacina.id}</th>
+  <td>${vacina.nome}</td>
+  <td>${vacina.registro}</td>
+  <td>
+    <button class="btn btn-warning btn-sm" onclick="editarVacina('${vacina.id}', '${vacina.nome}')">✏️</button>
+    <button class="btn btn-danger btn-sm" onclick="excluirVacina(${Number(vacina.id)})">🗑️</button>
+
+`;
+
+
       tabelaBody.appendChild(row);
-    });
+    });    
   } catch (error) {
     console.error("Erro ao carregar vacinas:", error);
   }
 }
 
-// Função para adicionar vacina
 async function adicionarVacina() {
   const registro = document.getElementById("registroVacina").value.trim();
   const nome = document.getElementById("nomeVacina").value.trim();
@@ -45,14 +45,29 @@ async function adicionarVacina() {
     return;
   }
 
+  // Buscar a lista atual de vacinas para gerar o próximo ID
+  let novoId = "0";  // Definindo o ID inicial como string
+  try {
+    const resposta = await fetch(apiURL);
+    const vacinas = await resposta.json();
+
+    const idsNumericos = vacinas.map(v => parseInt(v.id)).filter(n => !isNaN(n));
+    if (idsNumericos.length > 0) {
+      novoId = (Math.max(...idsNumericos) + 1).toString();  // Convertendo ID para string
+    }
+  } catch (e) {
+    console.error("Erro ao buscar vacinas para gerar ID:", e);
+  }
+
   const novaVacina = {
+    id: novoId,  // Usando o ID como string
     nome: nome,
     registro: registro
   };
 
   try {
     await fetch(apiURL, {
-      method: "POST",
+      method: "POST", 
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novaVacina)
     });
@@ -87,27 +102,28 @@ async function editarVacina(id, nomeAtual) {
   }
 }
 
+
 // Função para excluir vacina
 async function excluirVacina(id) {
-  if (!confirm(`Deseja realmente excluir a vacina de ID ${id}?`)) return;
+  const idString = id.toString(); // Força o ID a ser uma string
+
+  if (!confirm(`Deseja realmente excluir a vacina de ID ${idString}?`)) return;
 
   try {
-    await fetch(`${apiURL}/${id}`, {
+    const resposta = await fetch(`${apiURL}/${idString}`, {
       method: "DELETE"
     });
 
-    document.getElementById("searchInput").value = "";
+    if (!resposta.ok) {
+      throw new Error(`Erro ao excluir vacina: ${resposta.status}`);
+    }
+
     carregarDados();
   } catch (error) {
     console.error("Erro ao excluir vacina:", error);
+    alert("Erro ao excluir vacina. Tente novamente.");
   }
 }
-
-// Evento para busca
-document.getElementById("searchForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-  carregarDados();
-});
 
 // Atualiza a tabela enquanto o usuário digita
 document.getElementById("searchInput").addEventListener("input", function() {
