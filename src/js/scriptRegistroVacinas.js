@@ -66,3 +66,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         alert("Não foi possível carregar os funcionários. Verifique o servidor.");
     }
 });
+
+// Carregando tipos de vacinas
+document.addEventListener('DOMContentLoaded', async () => {
+    const vacinaSelect = document.getElementById('tipoVacina');
+
+    try {
+        const response = await fetch('http://localhost:3000/vacinas');
+        const vacinas = await response.json();
+
+        vacinas.forEach(vacina => {
+            if (vacina.nome) {
+                const option = document.createElement('option');
+                option.value = vacina.nome;
+                option.textContent = vacina.nome;
+                vacinaSelect.appendChild(option);
+            }
+        });
+    } catch (error) {
+        console.error("Erro ao carregar vacinas:", error);
+        alert("Não foi possível carregar os tipos de vacinas. Verifique o servidor.");
+    }
+});
