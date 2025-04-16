@@ -23,6 +23,14 @@ async function loadVaccines() {
     }
 }
 
+function debounce(func, delay) {
+    let timer;
+    return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+    };
+}  
+
 function calcularProximaDose(dataUltima) {
     const novaData = new Date(dataUltima);
     novaData.setMonth(novaData.getMonth() + 6); // Exemplo: próxima dose 6 meses depois
@@ -33,22 +41,26 @@ function formatarData(data) {
     return data.toLocaleDateString('pt-BR');
 }
 
-function filterVaccines() {
+const loadingMessage = document.getElementById("loadingMessage");
+
+function filterVaccinesReal() {
+  loadingMessage.style.display = "block";
+
+  setTimeout(() => { // Simula tempo de carregamento
     const today = new Date();
     const rows = document.querySelectorAll("#vaccineTableBody tr");
 
     rows.forEach(row => {
-        const proximaDoseStr = row.cells[2].textContent; // Coluna "Próxima dose"
-        const [dia, mes, ano] = proximaDoseStr.split('/');
-        const proximaDose = new Date(`${ano}-${mes}-${dia}`);
+      const proximaDoseStr = row.cells[2].textContent;
+      const [dia, mes, ano] = proximaDoseStr.split('/');
+      const proximaDose = new Date(`${ano}-${mes}-${dia}`);
 
-        if (proximaDose < today) {
-            row.style.display = "none"; // Esconde se já passou
-        } else {
-            row.style.display = ""; // Mostra se ainda é válida
-        }
+      row.style.display = proximaDose < today ? "none" : "";
     });
+
+    loadingMessage.style.display = "none";
+  }, 800); // Espera só pra mostrar o "Carregando..."
 }
 
-
+const filterVaccines = debounce(filterVaccinesReal, 300); // Evita clique rápido demais
 document.addEventListener("DOMContentLoaded", loadVaccines);

@@ -48,3 +48,10 @@ headerSearchForm.addEventListener("submit", pesquisarPagina);
 const mainSearchForm = document.getElementById("mainSearchForm");
 mainSearchForm.addEventListener("submit", pesquisarPagina);
 
+export function debounce(func, delay) {
+    let timer;
+    return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+    };
+}

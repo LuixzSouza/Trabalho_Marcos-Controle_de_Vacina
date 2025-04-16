@@ -25,7 +25,6 @@ async function carregarDados() {
   <td>
     <button class="btn btn-warning btn-sm" onclick="editarVacina('${vacina.id}', '${vacina.nome}')">✏️</button>
     <button class="btn btn-danger btn-sm" onclick="excluirVacina(${Number(vacina.id)})">🗑️</button>
-
 `;
 
 

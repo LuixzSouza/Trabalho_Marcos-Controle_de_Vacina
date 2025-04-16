@@ -43,7 +43,7 @@ function atualizarTabela() {
 function adicionarEventosPerfil() {
   document.querySelectorAll(".btn-info").forEach(button => {
     button.addEventListener("click", event => {
-      const id = event.target.closest("button").dataset.id;
+      const id = Number(event.target.closest("button").dataset.id);
       mostrarDetalhes(id);
     });
   });
@@ -52,7 +52,7 @@ function adicionarEventosPerfil() {
 function adicionarEventosExcluir() {
   document.querySelectorAll(".btn-danger").forEach(button => {
     button.addEventListener("click", event => {
-      const id = event.target.closest("button").dataset.id;
+      const id = Number(event.target.closest("button").dataset.id);
       excluirFuncionario(id);
     });
   });
@@ -139,7 +139,7 @@ function editarFuncionario(id) {
   editarModal.show();
 }
 document.getElementById("editar-btn").addEventListener("click", function () {
-  const id = this.getAttribute("data-id");
+  const id = Number(this.getAttribute("data-id"));
   editarFuncionario(id);
 });
 
