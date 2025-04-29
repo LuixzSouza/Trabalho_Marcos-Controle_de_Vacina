@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Bootstrap npm</title>
+    <link rel="icon" type="image/x-icon" href="public/icons/chamine-de-casa-medica.svg">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="d-flex" >
+      <nav id="sidebar" class="d-none d-lg-flex flex-column p-3 sidebar">
+        <a href="/index.html" class="mb-4 text-white text-decoration-none fs-4 fw-bold d-flex align-items-center gap-2">
+          <img src="/public/icons/logo_univas_white.png" alt="Logo Univas" style="width: 200px;">
+        </a>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item ">
+            <a href="/index.html" class="nav-link">
+              <img src="/public/icons/chamine-de-casa-medica.svg" alt="Home" style="width: 20px;"> Home
+            </a>
+          </li>
+          <!-- Dropdown Vacinas -->
+          <li class="nav-item">
+            <a href="#" class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenuVacinas" aria-expanded="false" aria-controls="submenuVacinas">
+              <span class="d-flex align-items-center gap-2">
+                <img src="/public/icons/seringa.svg" alt="Vacinas" style="width: 20px;"> Vacinas
+              </span>
+              <i class="bi bi-chevron-down" id="arrowVacinas"></i>
+            </a>
+            
+            <ul class="collapse list-unstyled ps-4" id="submenuVacinas">
+              <li>
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaListarVacinas.html">
+                  <i class="bi bi-list-ul"></i> Listar Vacinas
+                </a>
+              </li>
+              <li>
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaCartaoVacinaAtual.html">
+                  <i class="bi bi-card-list"></i> Cartão Vacina
+                </a>
+              </li>
+              <li>
+                <a class="nav-link d-flex align-items-center gap-2 " href="/pages/TelaRegistroVacina.html">
+                  <i class="bi bi-pencil-square"></i> Registro Aplicações
+                </a>
+              </li>
+              <li>
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaFiltroVacinas.html">
+                  <i class="bi bi-funnel"></i> Filtrar Vacinas
+                </a>
+              </li>
+              <li>
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaAgendamentoVacina.html">
+                  <i class="bi bi-calendar-check"></i> Agendamento Vacinas
+                </a>
+              </li>
+            </ul>        
+          </li>
+          
+          <li>
+            <a href="/pages/TelaListarFuncionarios.html" class="nav-link">
+              <img src="/public/icons/usuarios-alt.svg" alt="Funcionários" style="width: 20px;"> Funcionários
+            </a>
+          </li>
+          <li>
+            <a href="/pages/TelaAgendamentoVacina.html" class="nav-link">
+              <img src="/public/icons/seringa.svg" alt="Agendamentos" style="width: 20px;"> Agendamentos
+            </a>
+          </li>
+          <li>
+            <a href="/pages/TelaPerfilUsuario.html" class="nav-link">
+              <img src="/public/icons/usuario-do-circulo.svg" alt="Meu Perfil" style="width: 20px;"> Meu Perfil
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/settings.html"
+              class="nav-link text-white d-flex align-items-center gap-2 active">
+              <i class="bi bi-gear-fill"></i> 
+              Configurações
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/help.html"
+              class="nav-link text-white d-flex align-items-center gap-2">
+              <i class="bi bi-question-circle-fill"></i>
+              Ajuda
+            </a>
+          </li>
+        </ul>
+        <!-- Rodapé de usuário -->
+        <div class="mt-auto pt-3 border-top">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img src="/public/icons/usuario-do-circulo.svg" alt="Avatar" class="rounded-circle" style="filter: invert(1);" width="32" height="32">
+            <div class="text-white small">
+              Luiz Antônio de Souza<br>
+              <a href="/logout" class="text-decoration-none text-danger small">Sair</a>
+            </div>
+          </div>
+          <div class="text-muted small">&copy; 2025 Univas<br>v1.0.0</div>
+        </div>
+      </nav>
+
+      <!-- Sidebar mobile offcanvas -->
+      <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
+        <div class="offcanvas-header bg-success text-white">
+          <h5 id="mobileSidebarLabel" class="offcanvas-title">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+        </div>
+        <div class="offcanvas-body bg-success p-3">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item"><a href="/index.html" class="nav-link text-white"><i class="bi bi-house-door-fill me-2"></i>Home</a></li>
+            <li class="nav-item"><a href="/pages/TelaListarVacinas.html" class="nav-link text-white"><i class="bi bi-list-ul me-2"></i>Listar Vacinas</a></li>
+            <li class="nav-item"><a href="/pages/TelaCartaoVacinaAtual.html" class="nav-link text-white"><i class="bi bi-card-list me-2"></i>Cartão Vacina</a></li>
+            <li class="nav-item"><a href="/pages/TelaRegistroVacina.html" class="nav-link text-white"><i class="bi bi-pencil-square me-2"></i>Registro Aplicações</a></li>
+            <li class="nav-item"><a href="/pages/TelaFiltroVacinas.html" class="nav-link text-white"><i class="bi bi-funnel me-2"></i>Filtrar Vacinas</a></li>
+            <li class="nav-item"><a href="/pages/TelaAgendamentoVacina.html" class="nav-link text-white"><i class="bi bi-calendar-check me-2"></i>Agendar Vacinas</a></li>
+            <li class="nav-item"><a href="/pages/settings.html" class="nav-link text-white active"><i class="bi bi-gear-fill me-2"></i>Configurações</a></li>
+            <li class="nav-item"><a href="/pages/help.html" class="nav-link text-white"><i class="bi bi-question-circle-fill me-2"></i>Ajuda</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex-grow-1">
+        <!-- Header topo -->
+        <header class="d-flex justify-content-between align-items-center p-3">
+            <!-- Botão de abrir/fechar sidebar -->
+            <div class="d-flex align-items-center" >
+            <button id="toggleSidebar" class="d-none d-lg-flex btn btn-outline-success me-3">
+                <i class="bi bi-list"></i> 
+            </button>
+            <button class="btn btn-outline-success me-3 d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <h4>Gerenciador</h4>
+            </div>
+            <!-- Busca -->
+            <form id="headerSearchForm" class="input-group w-50">
+            <input type="search" class="form-control" placeholder="Buscar...">
+            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+            <div class="d-flex align-items-center">
+            <!-- Notificações -->
+            <button class="btn position-relative me-3">
+                <i class="bi bi-bell fs-4"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+            </button>
+            <!-- Perfil -->
+            <div class="dropdown">
+                <a class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <img src="/public/icons/usuario-do-circulo.svg" alt="Perfil" class="rounded-circle me-2" style="width: 32px; height: 32px;">
+                Usuário
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/pages/TelaPerfilUsuario.html">Meu Perfil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sair</a></li>
+                </ul>
+            </div>
+            </div>
+        </header>
+        
+        <section>
+          <div class="container text-center mt-5">
+            <h1>404 Não encontramos nenhum resultado para a pesquisa: <span id="searchTerm" style="color: red;"></span></h1>
+            <p class="lead">Pesquise por suas vacinas, funcionários e muito mais de forma rápida e prática!</p>
+            <form class="d-flex justify-content-center mt-4" role="search" id="headerSearchForm">
+              <input class="form-control w-50" type="search" placeholder="Digite o que deseja buscar..." aria-label="Search">
+              <button class="btn btn-outline-success ms-2" type="submit">Buscar</button>
+            </form>
+            <div id="mensagemErro"></div>
+          </div>    
+        </section>
+      </div>
+    </div>
+ 
+
+    <script>
+      const container = document.getElementById("mensagemErro");
+      const mensagem = localStorage.getItem("notFoundMensagem");
+      if (mensagem) {
+        container.innerHTML = mensagem;
+        localStorage.removeItem("notFoundMensagem");
+      }
+
+      // Função para pegar o parâmetro de URL 'search'
+      function getSearchParam() {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get('search');
+      }
+
+      // Exibe o termo pesquisado
+      const searchTerm = getSearchParam();
+      if (searchTerm) {
+          document.getElementById("searchTerm").textContent = searchTerm;
+      }
+  </script>
+
+<script type="module" src="/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="public/icons/chamine-de-casa-medica.svg">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style/style.css">
+  <!-- Primary Meta Tags -->
+  <title>UNIVAS - Sistema de Vacinação</title>
+  <meta name="title" content="UNIVAS - Sistema de Vacinação" />
+  <meta name="description" content="UNIVAS - Sistema de gerenciamento de vacinas desenvolvido como projeto acadêmico. Apresente dashboards, agendamentos, perfis de usuários e controle de aplicações de forma intuitiva e moderna." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gerenciadordevacinas.netlify.app" />
+  <meta property="og:title" content="UNIVAS - Sistema de Vacinação" />
+  <meta property="og:description" content="UNIVAS - Sistema de gerenciamento de vacinas desenvolvido como projeto acadêmico. Apresente dashboards, agendamentos, perfis de usuários e controle de aplicações de forma intuitiva e moderna." />
+  <meta property="og:image" content="https://gerenciadordevacinas.netlify.app/coverImage.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://gerenciadordevacinas.netlify.app" />
+  <meta property="twitter:title" content="UNIVAS - Sistema de Vacinação" />
+  <meta property="twitter:description" content="UNIVAS - Sistema de gerenciamento de vacinas desenvolvido como projeto acadêmico. Apresente dashboards, agendamentos, perfis de usuários e controle de aplicações de forma intuitiva e moderna." />
+  <meta property="twitter:image" content="https://gerenciadordevacinas.netlify.app/coverImage.png" />
+</head>
+<body>
+
+  <div class="d-flex" >
+    <nav id="sidebar" class="d-none d-lg-flex flex-column p-3 sidebar">
+      <a href="/index.html" class="mb-4 text-white text-decoration-none fs-4 fw-bold d-flex align-items-center gap-2">
+        <img src="/public/icons/logo_univas_white.png" alt="Logo Univas" style="width: 200px;">
+      </a>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item ">
+          <a href="/index.html" class="nav-link active">
+            <img src="/public/icons/chamine-de-casa-medica.svg" alt="Home" style="width: 20px;"> Home
+          </a>
+        </li>
+        <!-- Dropdown Vacinas -->
+        <li class="nav-item">
+          <a href="#" class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenuVacinas" aria-expanded="false" aria-controls="submenuVacinas">
+            <span class="d-flex align-items-center gap-2">
+              <img src="/public/icons/seringa.svg" alt="Vacinas" style="width: 20px;"> Vacinas
+            </span>
+            <i class="bi bi-chevron-down" id="arrowVacinas"></i>
+          </a>
+          
+          <ul class="collapse list-unstyled ps-4" id="submenuVacinas">
+            <li>
+              <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaListarVacinas.html">
+                <i class="bi bi-list-ul"></i> Listar Vacinas
+              </a>
+            </li>
+            <li>
+              <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaCartaoVacinaAtual.html">
+                <i class="bi bi-card-list"></i> Cartão Vacina
+              </a>
+            </li>
+            <li>
+              <a class="nav-link d-flex align-items-center gap-2 " href="/pages/TelaRegistroVacina.html">
+                <i class="bi bi-pencil-square"></i> Registro Aplicações
+              </a>
+            </li>
+            <li>
+              <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaFiltroVacinas.html">
+                <i class="bi bi-funnel"></i> Filtrar Vacinas
+              </a>
+            </li>
+            <li>
+              <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaAgendamentoVacina.html">
+                <i class="bi bi-calendar-check"></i> Agendamento Vacinas
+              </a>
+            </li>
+          </ul>        
+        </li>
+        
+        <li>
+          <a href="/pages/TelaListarFuncionarios.html" class="nav-link">
+            <img src="/public/icons/usuarios-alt.svg" alt="Funcionários" style="width: 20px;"> Funcionários
+          </a>
+        </li>
+        <li>
+          <a href="/pages/TelaPerfilUsuario.html" class="nav-link">
+            <img src="/public/icons/usuario-do-circulo.svg" alt="Meu Perfil" style="width: 20px;"> Meu Perfil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/pages/settings.html"
+            class="nav-link text-white d-flex align-items-center gap-2">
+            <i class="bi bi-gear-fill"></i> 
+            Configurações
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/pages/help.html"
+            class="nav-link text-white d-flex align-items-center gap-2">
+            <i class="bi bi-question-circle-fill"></i>
+            Ajuda
+          </a>
+        </li>
+      </ul>
+      <!-- Rodapé de usuário -->
+      <div class="mt-auto pt-3 border-top">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <img src="/public/icons/usuario-do-circulo.svg" alt="Avatar" class="rounded-circle" style="filter: invert(1);" width="32" height="32">
+          <div class="text-white small">
+            Luiz Antônio de Souza<br>
+            <a href="/logout" class="text-decoration-none text-danger small">Sair</a>
+          </div>
+        </div>
+        <div class="text-muted small">&copy; 2025 Univas<br>v1.0.0</div>
+      </div>
+    </nav>
+
+    <!-- Sidebar mobile offcanvas -->
+    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
+        <div class="offcanvas-header bg-success text-white">
+        <a href="/index.html" class="mb-4 text-white text-decoration-none fs-4 fw-bold d-flex align-items-center gap-2">
+            <img src="/public/icons/logo_univas_white.png" alt="Logo Univas" style="width: 200px;">
+        </a>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+        </div>
+        <div class="offcanvas-body bg-success p-3">
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item ">
+            <a href="/index.html" class="nav-link">
+                <img src="/public/icons/chamine-de-casa-medica.svg" alt="Home" style="width: 20px;"> Home
+            </a>
+            </li>
+            <!-- Dropdown Vacinas -->
+            <li class="nav-item">
+            <a href="#" class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenuVacinas" aria-expanded="false" aria-controls="submenuVacinas">
+                <span class="d-flex align-items-center gap-2">
+                <img src="/public/icons/seringa.svg" alt="Vacinas" style="width: 20px;"> Vacinas
+                </span>
+                <i class="bi bi-chevron-down" id="arrowVacinas"></i>
+            </a>
+            
+            <ul class="collapse list-unstyled ps-4" id="submenuVacinas">
+                <li>
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaListarVacinas.html">
+                    <i class="bi bi-list-ul"></i> Listar Vacinas
+                </a>
+                </li>
+                <li>
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaCartaoVacinaAtual.html">
+                    <i class="bi bi-card-list"></i> Cartão Vacina
+                </a>
+                </li>
+                <li>
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaRegistroVacina.html">
+                    <i class="bi bi-pencil-square"></i> Registro Aplicações
+                </a>
+                </li>
+                <li>
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaFiltroVacinas.html">
+                    <i class="bi bi-funnel"></i> Filtrar Vacinas
+                </a>
+                </li>
+                <li>
+                <a class="nav-link d-flex align-items-center gap-2 active" href="/pages/TelaAgendamentoVacina.html">
+                    <i class="bi bi-calendar-check"></i> Agendamento Vacinas
+                </a>
+                </li>
+            </ul>        
+            </li>
+            
+            <li>
+            <a href="/pages/TelaListarFuncionarios.html" class="nav-link">
+                <img src="/public/icons/usuarios-alt.svg" alt="Funcionários" style="width: 20px;"> Funcionários
+            </a>
+            </li>
+            <li>
+            <a href="/pages/TelaPerfilUsuario.html" class="nav-link">
+                <img src="/public/icons/usuario-do-circulo.svg" alt="Meu Perfil" style="width: 20px;"> Meu Perfil
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="/pages/settings.html"
+                class="nav-link text-white d-flex align-items-center gap-2 ">
+                <i class="bi bi-gear-fill"></i> 
+                Configurações
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="/pages/help.html"
+                class="nav-link text-white d-flex align-items-center gap-2">
+                <i class="bi bi-question-circle-fill"></i>
+                Ajuda
+            </a>
+            </li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="flex-grow-1">
+      <!-- Header topo -->
+      <header class="d-flex justify-content-between align-items-center p-3">
+          <!-- Botão de abrir/fechar sidebar -->
+          <div class="d-flex align-items-center" >
+          <button id="toggleSidebar" class="d-none d-lg-flex btn btn-outline-success me-3">
+              <i class="bi bi-list"></i> 
+          </button>
+          <button class="btn btn-outline-success me-3 d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+              <i class="bi bi-list"></i>
+          </button>
+          <h4 class="text-black d-flex align-items-center gap-2">
+            <img src="/public/icons/chamine-de-casa-medica.svg" alt="Funcionários" style="width: 30px;">
+            Painel de Controle
+          </h4>
+          </div>
+          <!-- Busca -->
+          <form id="headerSearchForm" class="input-group w-50">
+          <input type="search" class="form-control" placeholder="Buscar...">
+          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+          </form>
+          <div class="d-flex align-items-center">
+          <!-- Notificações -->
+          <button class="btn position-relative me-3">
+              <i class="bi bi-bell fs-4"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+          </button>
+          <!-- Perfil -->
+          <div class="dropdown">
+              <a class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" href="#" data-bs-toggle="dropdown">
+              <img src="/public/icons/usuario-do-circulo.svg" alt="Perfil" class="rounded-circle me-2" style="width: 32px; height: 32px;">
+              Usuário
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="/pages/TelaPerfilUsuario.html">Meu Perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Sair</a></li>
+              </ul>
+          </div>
+          </div>
+      </header>
+
+      <!-- Conteúdo principal -->
+      <main class="p-4">
+        <div class="row mb-4">
+          <div class="col-md-8">
+            <div class="card p-3 bg-white border-0 shadow-sm">
+              <h5 class="mb-3">Olá, Usuário</h5>
+              <div class="row mb-4">
+                <!-- Agendamentos do Dia -->
+                <div class="col-md-4">
+                  <div class="card flex-fill card-metric text-center p-3 position-relative">
+                    <i class="bi bi-calendar-event-fill position-absolute" style="top:8px; left:8px; font-size:1.2rem;"></i>
+                    <p class="mb-1 fw-semibold">Agendamentos do Dia</p>
+                    <h3 id="metricToday" class="display-4">0</h3>
+                    <div style="height:50px; width:100%;">
+                      <canvas id="sparklineToday"></canvas>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Solicitações Aguardando -->
+                <div class="col-md-4">
+                  <div class="card flex-fill card-metric text-center p-3 position-relative">
+                    <i class="bi bi-hourglass-split position-absolute" style="top:8px; left:8px; font-size:1.2rem;"></i>
+                    <p class="mb-1 fw-semibold">Solicitações Aguardando</p>
+                    <h3 id="metricPending" class="display-4">0</h3>
+                    <div style="height:50px; width:100%;">
+                      <canvas id="sparklinePending"></canvas>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Total de Vacinas Aplicadas -->
+                <div class="col-md-4">
+                  <div class="card flex-fill card-metric text-center p-3 position-relative">
+                    <i class="bi bi-check2-all position-absolute" style="top:8px; left:8px; font-size:1.2rem;"></i>
+                    <p class="mb-1 fw-semibold">Total de Vacinas Aplicadas</p>
+                    <h3 id="metricTotal" class="display-4">0</h3>
+                    <div style="height:50px; width:100%;">
+                      <canvas id="sparklineTotal"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="card p-3 bg-white border-0 shadow-sm text-center">
+              <h5 class="mb-3">Funcionários</h5>
+              <div style="position: relative; height:200px; width:200px; margin:0 auto;">
+                <canvas id="statusChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ações rápidas -->
+        <div class="row g-3">
+          <div class="col-md-3">
+            <div class="card card-action h-100 d-flex flex-column justify-content-between p-3">
+              <h6>Listar Vacinas</h6>
+              <p class="display-4" id="totalVacinas">0</p>
+              <small id="lowStock"></small>
+              <div style="height:150px;"><canvas id="chartVacinasPopulares"></canvas></div>
+              <a href="/pages/TelaListarVacinas.html" class="btn btn-action d-flex justify-content-between align-items-center">
+                <span>Acessar</span>
+                <span class="icon-circle">
+                  <i class="bi bi-arrow-right"></i> <!-- Bootstrap Icons -->
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card card-action h-100 d-flex flex-column justify-content-between p-3">
+              <h6>Cartão Vacina</h6>
+              <p class="display-4" id="dosesTomadas">0</p>
+              <p>Próxima dose: <strong id="proximaDose">—</strong></p>
+              <div class="progress" style="height:10px;">
+                <div class="progress-bar progress-bar-cartao bg-success" role="progressbar" style="width:0%">0%</div>
+              </div>              
+              <a href="/pages/TelaCartaoVacinaAtual.html" class="btn btn-action d-flex justify-content-between align-items-center">
+                <span>Acessar</span>
+                <span class="icon-circle">
+                  <i class="bi bi-arrow-right"></i> <!-- Bootstrap Icons -->
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card card-action h-100 d-flex flex-column justify-content-between p-3">
+              <h6>Registro de Aplicações</h6>
+              <div style="height:150px;"><canvas id="chartAplicacoes7d"></canvas></div>
+              <p><strong>Hoje:</strong> <span id="aplicacoesHoje">0</span></p>          
+              <a href="/pages/TelaRegistroVacina.html" class="btn btn-action d-flex justify-content-between align-items-center">
+                <span>Acessar</span>
+                <span class="icon-circle">
+                  <i class="bi bi-arrow-right"></i> <!-- Bootstrap Icons -->
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card card-action h-100 d-flex flex-column justify-content-between p-3">
+              <h6>Agendamento Vacinas</h6>
+              <p class="display-4" id="agendPendentesCount">0</p>
+              <ul id="agendPendentesList" class="list-unstyled small"></ul>
+              <canvas id="miniCalendar" height="80"></canvas>
+              <a href="/pages/TelaAgendamentoVacina.html" class="btn btn-action d-flex justify-content-between align-items-center">
+                <span>Acessar</span>
+                <span class="icon-circle">
+                  <i class="bi bi-arrow-right"></i> <!-- Bootstrap Icons -->
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+<script type="module" src="/js/script.js"></script>
+
+</body>
+</html>

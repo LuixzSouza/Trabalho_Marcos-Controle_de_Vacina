@@ -49,6 +49,15 @@
       "email": "luiz.antonio@email.com",
       "telefone": "(85) 96666-5555",
       "secao": "Desenvolvimento"
+    },
+    {
+      "id": "a213",
+      "nome": "JoséMangueiraReta",
+      "cpf": "12312312312",
+      "registro": "FUN1234",
+      "email": "luiz.antoniodesouza004@gmail.com",
+      "telefone": "1233213123",
+      "secao": "Financeiro"
     }
   ],
   "vacinas": [
