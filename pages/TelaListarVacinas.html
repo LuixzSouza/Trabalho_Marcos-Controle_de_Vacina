@@ -185,14 +185,14 @@
           <!-- Botão de abrir/fechar sidebar -->
           <div class="d-flex align-items-center" >
             <button id="toggleSidebar" class="d-none d-lg-flex btn btn-outline-success me-3">
-              <i class="bi bi-list"></i> 
+                <i class="bi bi-list"></i> 
             </button>
             <button class="btn btn-outline-success me-3 d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
-              <i class="bi bi-list"></i>
+                <i class="bi bi-list"></i>
             </button>
             <h4 class="text-black d-flex align-items-center gap-2">
-              <i class="bi bi-list-ul"></i>
-              Listar Vacinas
+              <img src="/public/icons/chamine-de-casa-medica.svg" alt="Funcionários" style="width: 30px;">
+              Painel de Controle
             </h4>
           </div>
           <!-- Busca -->
@@ -201,22 +201,36 @@
             <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
           </form>
           <div class="d-flex align-items-center">
-            <!-- Notificações -->
-            <button class="btn position-relative me-3">
+            <!-- Dentro do seu header, substitua só a parte do botão de notificações por: -->
+            <button id="btnNotifications" class="btn position-relative me-3">
               <i class="bi bi-bell fs-4"></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
             </button>
+            <!-- Toasts de Notificação -->
+            <div class="position-fixed top-0 end-0 p-3" style="z-index: 1100;">
+              <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                  <i class="bi bi-bell-fill me-2"></i>
+                  <strong class="me-auto">Notificações</strong>
+                  <small class="text-muted" id="toastTime">agora</small>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar"></button>
+                </div>
+                <div class="toast-body" id="toastBody">
+                  <!-- Itens de notificação serão injetados aqui -->
+                </div>
+              </div>
+            </div>
             <!-- Perfil -->
             <div class="dropdown">
-              <a class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <a class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" href="#" data-bs-toggle="dropdown">
                 <img src="/public/icons/usuario-do-circulo.svg" alt="Perfil" class="rounded-circle me-2" style="width: 32px; height: 32px;">
                 Usuário
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="/pages/TelaPerfilUsuario.html">Meu Perfil</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Sair</a></li>
-              </ul>
+                </ul>
             </div>
           </div>
         </header>

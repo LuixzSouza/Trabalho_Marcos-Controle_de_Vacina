@@ -42,6 +42,13 @@ const pages = [
       window.location.href = `/pages/NotFound.html?search=${encodeURIComponent(query)}`;
     }
   }
+
+  // Aplica a função para o formulário do header
+  document.getElementById("headerSearchForm")?.addEventListener("submit", pesquisarPagina);
+
+  // Aplica a função para o formulário da página NotFound
+  document.getElementById("notFoundSearchForm")?.addEventListener("submit", pesquisarPagina);
+
   
   // Função debounce para uso futuro
   export function debounce(func, delay) {
@@ -296,4 +303,49 @@ const pages = [
     });
   }
   
-  
+// Notificação
+document.addEventListener('DOMContentLoaded', function() {
+  // Referências
+  const btn = document.getElementById('btnNotifications');
+  const badge = btn.querySelector('.badge');
+  const toastEl = document.getElementById('notificationToast');
+  const toastBody = document.getElementById('toastBody');
+  const toastTime = document.getElementById('toastTime');
+  const toast = new bootstrap.Toast(toastEl);
+
+  // Exemplo de notificações (troque por fetch/AJAX real)
+  const notifications = [
+    { text: 'Paciente João Silva recebeu a dose 2 de Covid-19', time: 'há 5 min' },
+    { text: 'Nova vacina “Influenza” adicionada ao catálogo', time: 'há 30 min' },
+    { text: 'Agendamento pendente para Maria Souza em 01/05/2025', time: 'há 1 h' }
+  ];
+
+  // Atualiza contagem da badge
+  function updateBadge() {
+    badge.textContent = notifications.length;
+  }
+
+  // Preenche o corpo do toast
+  function populateToast() {
+    toastBody.innerHTML = '';
+    notifications.forEach(n => {
+      const item = document.createElement('div');
+      item.className = 'mb-2';
+      item.innerHTML = `
+        <div>${n.text}</div>
+        <small class="text-muted">${n.time}</small>
+      `;
+      toastBody.appendChild(item);
+    });
+    toastTime.textContent = new Date().toLocaleTimeString();
+  }
+
+  // Ao clicar no sino, exibe o toast
+  btn.addEventListener('click', () => {
+    populateToast();
+    toast.show();
+  });
+
+  // Inicializa badge
+  updateBadge();
+});

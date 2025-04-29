@@ -16,20 +16,19 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://gerenciadordevacinas.netlify.app" />
+  <meta property="og:url" content="https://gerenciadordevacinas.netlify.app/coverImage.png" />
   <meta property="og:title" content="UNIVAS - Sistema de Vacinação" />
   <meta property="og:description" content="UNIVAS - Sistema de gerenciamento de vacinas desenvolvido como projeto acadêmico. Apresente dashboards, agendamentos, perfis de usuários e controle de aplicações de forma intuitiva e moderna." />
   <meta property="og:image" content="https://gerenciadordevacinas.netlify.app/coverImage.png" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://gerenciadordevacinas.netlify.app" />
+  <meta property="twitter:url" content="https://gerenciadordevacinas.netlify.app/coverImage.png" />
   <meta property="twitter:title" content="UNIVAS - Sistema de Vacinação" />
   <meta property="twitter:description" content="UNIVAS - Sistema de gerenciamento de vacinas desenvolvido como projeto acadêmico. Apresente dashboards, agendamentos, perfis de usuários e controle de aplicações de forma intuitiva e moderna." />
   <meta property="twitter:image" content="https://gerenciadordevacinas.netlify.app/coverImage.png" />
 </head>
 <body>
-
   <div class="d-flex" >
     <nav id="sidebar" class="d-none d-lg-flex flex-column p-3 sidebar">
       <a href="/index.html" class="mb-4 text-white text-decoration-none fs-4 fw-bold d-flex align-items-center gap-2">
@@ -203,40 +202,54 @@
       <header class="d-flex justify-content-between align-items-center p-3">
           <!-- Botão de abrir/fechar sidebar -->
           <div class="d-flex align-items-center" >
-          <button id="toggleSidebar" class="d-none d-lg-flex btn btn-outline-success me-3">
-              <i class="bi bi-list"></i> 
-          </button>
-          <button class="btn btn-outline-success me-3 d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
-              <i class="bi bi-list"></i>
-          </button>
-          <h4 class="text-black d-flex align-items-center gap-2">
-            <img src="/public/icons/chamine-de-casa-medica.svg" alt="Funcionários" style="width: 30px;">
-            Painel de Controle
-          </h4>
+            <button id="toggleSidebar" class="d-none d-lg-flex btn btn-outline-success me-3">
+                <i class="bi bi-list"></i> 
+            </button>
+            <button class="btn btn-outline-success me-3 d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <h4 class="text-black d-flex align-items-center gap-2">
+              <img src="/public/icons/chamine-de-casa-medica.svg" alt="Funcionários" style="width: 30px;">
+              Painel de Controle
+            </h4>
           </div>
           <!-- Busca -->
           <form id="headerSearchForm" class="input-group w-50">
-          <input type="search" class="form-control" placeholder="Buscar...">
-          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+            <input type="search" class="form-control" placeholder="Buscar...">
+            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
           </form>
           <div class="d-flex align-items-center">
-          <!-- Notificações -->
-          <button class="btn position-relative me-3">
+            <!-- Dentro do seu header, substitua só a parte do botão de notificações por: -->
+            <button id="btnNotifications" class="btn position-relative me-3">
               <i class="bi bi-bell fs-4"></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
-          </button>
-          <!-- Perfil -->
-          <div class="dropdown">
-              <a class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" href="#" data-bs-toggle="dropdown">
-              <img src="/public/icons/usuario-do-circulo.svg" alt="Perfil" class="rounded-circle me-2" style="width: 32px; height: 32px;">
-              Usuário
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="/pages/TelaPerfilUsuario.html">Meu Perfil</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Sair</a></li>
-              </ul>
-          </div>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </button>
+            <!-- Toasts de Notificação -->
+            <div class="position-fixed top-0 end-0 p-3" style="z-index: 1100;">
+              <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                  <i class="bi bi-bell-fill me-2"></i>
+                  <strong class="me-auto">Notificações</strong>
+                  <small class="text-muted" id="toastTime">agora</small>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar"></button>
+                </div>
+                <div class="toast-body" id="toastBody">
+                  <!-- Itens de notificação serão injetados aqui -->
+                </div>
+              </div>
+            </div>
+            <!-- Perfil -->
+            <div class="dropdown">
+                <a class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <img src="/public/icons/usuario-do-circulo.svg" alt="Perfil" class="rounded-circle me-2" style="width: 32px; height: 32px;">
+                Usuário
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/pages/TelaPerfilUsuario.html">Meu Perfil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sair</a></li>
+                </ul>
+            </div>
           </div>
       </header>
 

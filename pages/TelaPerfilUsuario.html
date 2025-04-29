@@ -9,277 +9,290 @@
   <link rel="stylesheet" href="../style/style.css">
 </head>
 <body >
-    <div class="d-flex" >
-
-        <!-- Sidebar -->
-        <nav id="sidebar" class="d-none d-lg-flex flex-column p-3 sidebar">
-          <a href="/index.html" class="mb-4 text-white text-decoration-none fs-4 fw-bold d-flex align-items-center gap-2">
-            <img src="/public/icons/logo_univas_white.png" alt="Logo Univas" style="width: 200px;">
+  <div class="d-flex" >
+    <!-- Sidebar -->
+    <nav id="sidebar" class="d-none d-lg-flex flex-column p-3 sidebar">
+      <a href="/index.html" class="mb-4 text-white text-decoration-none fs-4 fw-bold d-flex align-items-center gap-2">
+        <img src="/public/icons/logo_univas_white.png" alt="Logo Univas" style="width: 200px;">
+      </a>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item ">
+          <a href="/index.html" class="nav-link">
+            <img src="/public/icons/chamine-de-casa-medica.svg" alt="Home" style="width: 20px;"> Home
           </a>
-          <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item ">
-              <a href="/index.html" class="nav-link">
-                <img src="/public/icons/chamine-de-casa-medica.svg" alt="Home" style="width: 20px;"> Home
+        </li>
+        <!-- Dropdown Vacinas -->
+        <li class="nav-item">
+          <a href="#" class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenuVacinas" aria-expanded="false" aria-controls="submenuVacinas">
+            <span class="d-flex align-items-center gap-2">
+              <img src="/public/icons/seringa.svg" alt="Vacinas" style="width: 20px;"> Vacinas
+            </span>
+            <i class="bi bi-chevron-down" id="arrowVacinas"></i>
+          </a>
+          
+          <ul class="collapse list-unstyled ps-4" id="submenuVacinas">
+            <li>
+              <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaListarVacinas.html">
+                <i class="bi bi-list-ul"></i> Listar Vacinas
               </a>
+            </li>
+            <li>
+              <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaCartaoVacinaAtual.html">
+                <i class="bi bi-card-list"></i> Cartão Vacina
+              </a>
+            </li>
+            <li>
+              <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaRegistroVacina.html">
+                <i class="bi bi-pencil-square"></i> Registro Aplicações
+              </a>
+            </li>
+            <li>
+              <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaFiltroVacinas.html">
+                <i class="bi bi-funnel"></i> Filtrar Vacinas
+              </a>
+            </li>
+            <li>
+              <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaAgendamentoVacina.html">
+                <i class="bi bi-calendar-check"></i> Agendamento Vacinas
+              </a>
+            </li>
+          </ul>        
+        </li>
+        
+        <li>
+          <a href="/pages/TelaListarFuncionarios.html" class="nav-link">
+            <img src="/public/icons/usuarios-alt.svg" alt="Funcionários" style="width: 20px;"> Funcionários
+          </a>
+        </li>
+        <li>
+          <a href="/pages/TelaPerfilUsuario.html" class="nav-link active">
+            <img src="/public/icons/usuario-do-circulo.svg" alt="Meu Perfil" style="width: 20px;"> Meu Perfil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/pages/settings.html"
+              class="nav-link text-white d-flex align-items-center gap-2">
+            <i class="bi bi-gear-fill"></i>
+            Configurações
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/pages/help.html"
+              class="nav-link text-white d-flex align-items-center gap-2">
+            <i class="bi bi-question-circle-fill"></i>
+            Ajuda
+          </a>
+        </li>
+      </ul>
+      <!-- Rodapé de usuário -->
+      <div class="mt-auto pt-3 border-top">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <img src="/public/icons/usuario-do-circulo.svg" alt="Avatar" class="rounded-circle" style="filter: invert(1);" width="32" height="32">
+          <div class="text-white small">
+            Luiz Antônio de Souza<br>
+            <a href="/logout" class="text-decoration-none text-danger small">Sair</a>
+          </div>
+        </div>
+        <div class="text-muted small">&copy; 2025 Univas<br>v1.0.0</div>
+      </div>
+    </nav>
+
+    <!-- Sidebar mobile offcanvas -->
+    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
+        <div class="offcanvas-header bg-success text-white">
+        <a href="/index.html" class="mb-4 text-white text-decoration-none fs-4 fw-bold d-flex align-items-center gap-2">
+            <img src="/public/icons/logo_univas_white.png" alt="Logo Univas" style="width: 200px;">
+        </a>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+        </div>
+        <div class="offcanvas-body bg-success p-3">
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item ">
+            <a href="/index.html" class="nav-link">
+                <img src="/public/icons/chamine-de-casa-medica.svg" alt="Home" style="width: 20px;"> Home
+            </a>
             </li>
             <!-- Dropdown Vacinas -->
             <li class="nav-item">
-              <a href="#" class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenuVacinas" aria-expanded="false" aria-controls="submenuVacinas">
+            <a href="#" class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenuVacinas" aria-expanded="false" aria-controls="submenuVacinas">
                 <span class="d-flex align-items-center gap-2">
-                  <img src="/public/icons/seringa.svg" alt="Vacinas" style="width: 20px;"> Vacinas
+                <img src="/public/icons/seringa.svg" alt="Vacinas" style="width: 20px;"> Vacinas
                 </span>
                 <i class="bi bi-chevron-down" id="arrowVacinas"></i>
-              </a>
-              
-              <ul class="collapse list-unstyled ps-4" id="submenuVacinas">
+            </a>
+            
+            <ul class="collapse list-unstyled ps-4" id="submenuVacinas">
                 <li>
-                  <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaListarVacinas.html">
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaListarVacinas.html">
                     <i class="bi bi-list-ul"></i> Listar Vacinas
-                  </a>
+                </a>
                 </li>
                 <li>
-                  <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaCartaoVacinaAtual.html">
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaCartaoVacinaAtual.html">
                     <i class="bi bi-card-list"></i> Cartão Vacina
-                  </a>
+                </a>
                 </li>
                 <li>
-                  <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaRegistroVacina.html">
+                <a class="nav-link d-flex align-items-center gap-2 " href="/pages/TelaRegistroVacina.html">
                     <i class="bi bi-pencil-square"></i> Registro Aplicações
-                  </a>
+                </a>
                 </li>
                 <li>
-                  <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaFiltroVacinas.html">
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaFiltroVacinas.html">
                     <i class="bi bi-funnel"></i> Filtrar Vacinas
-                  </a>
+                </a>
                 </li>
                 <li>
-                  <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaAgendamentoVacina.html">
+                <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaAgendamentoVacina.html">
                     <i class="bi bi-calendar-check"></i> Agendamento Vacinas
-                  </a>
+                </a>
                 </li>
-              </ul>        
+            </ul>        
             </li>
             
             <li>
-              <a href="/pages/TelaListarFuncionarios.html" class="nav-link">
+            <a href="/pages/TelaListarFuncionarios.html" class="nav-link">
                 <img src="/public/icons/usuarios-alt.svg" alt="Funcionários" style="width: 20px;"> Funcionários
-              </a>
+            </a>
             </li>
             <li>
-              <a href="/pages/TelaPerfilUsuario.html" class="nav-link active">
+            <a href="/pages/TelaPerfilUsuario.html" class="nav-link active">
                 <img src="/public/icons/usuario-do-circulo.svg" alt="Meu Perfil" style="width: 20px;"> Meu Perfil
-              </a>
+            </a>
             </li>
             <li class="nav-item">
-              <a href="/pages/settings.html"
-                 class="nav-link text-white d-flex align-items-center gap-2">
-                <i class="bi bi-gear-fill"></i>
+            <a href="/pages/settings.html"
+                class="nav-link text-white d-flex align-items-center gap-2 ">
+                <i class="bi bi-gear-fill"></i> 
                 Configurações
-              </a>
+            </a>
             </li>
             <li class="nav-item">
-              <a href="/pages/help.html"
-                 class="nav-link text-white d-flex align-items-center gap-2">
+            <a href="/pages/help.html"
+                class="nav-link text-white d-flex align-items-center gap-2">
                 <i class="bi bi-question-circle-fill"></i>
                 Ajuda
-              </a>
-            </li>
-          </ul>
-          <!-- Rodapé de usuário -->
-          <div class="mt-auto pt-3 border-top">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <img src="/public/icons/usuario-do-circulo.svg" alt="Avatar" class="rounded-circle" style="filter: invert(1);" width="32" height="32">
-              <div class="text-white small">
-                Luiz Antônio de Souza<br>
-                <a href="/logout" class="text-decoration-none text-danger small">Sair</a>
-              </div>
-            </div>
-            <div class="text-muted small">&copy; 2025 Univas<br>v1.0.0</div>
-          </div>
-        </nav>
-  
-        <!-- Sidebar mobile offcanvas -->
-        <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
-            <div class="offcanvas-header bg-success text-white">
-            <a href="/index.html" class="mb-4 text-white text-decoration-none fs-4 fw-bold d-flex align-items-center gap-2">
-                <img src="/public/icons/logo_univas_white.png" alt="Logo Univas" style="width: 200px;">
             </a>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
-            </div>
-            <div class="offcanvas-body bg-success p-3">
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item ">
-                <a href="/index.html" class="nav-link">
-                    <img src="/public/icons/chamine-de-casa-medica.svg" alt="Home" style="width: 20px;"> Home
-                </a>
-                </li>
-                <!-- Dropdown Vacinas -->
-                <li class="nav-item">
-                <a href="#" class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenuVacinas" aria-expanded="false" aria-controls="submenuVacinas">
-                    <span class="d-flex align-items-center gap-2">
-                    <img src="/public/icons/seringa.svg" alt="Vacinas" style="width: 20px;"> Vacinas
-                    </span>
-                    <i class="bi bi-chevron-down" id="arrowVacinas"></i>
-                </a>
-                
-                <ul class="collapse list-unstyled ps-4" id="submenuVacinas">
-                    <li>
-                    <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaListarVacinas.html">
-                        <i class="bi bi-list-ul"></i> Listar Vacinas
-                    </a>
-                    </li>
-                    <li>
-                    <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaCartaoVacinaAtual.html">
-                        <i class="bi bi-card-list"></i> Cartão Vacina
-                    </a>
-                    </li>
-                    <li>
-                    <a class="nav-link d-flex align-items-center gap-2 " href="/pages/TelaRegistroVacina.html">
-                        <i class="bi bi-pencil-square"></i> Registro Aplicações
-                    </a>
-                    </li>
-                    <li>
-                    <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaFiltroVacinas.html">
-                        <i class="bi bi-funnel"></i> Filtrar Vacinas
-                    </a>
-                    </li>
-                    <li>
-                    <a class="nav-link d-flex align-items-center gap-2" href="/pages/TelaAgendamentoVacina.html">
-                        <i class="bi bi-calendar-check"></i> Agendamento Vacinas
-                    </a>
-                    </li>
-                </ul>        
-                </li>
-                
-                <li>
-                <a href="/pages/TelaListarFuncionarios.html" class="nav-link">
-                    <img src="/public/icons/usuarios-alt.svg" alt="Funcionários" style="width: 20px;"> Funcionários
-                </a>
-                </li>
-                <li>
-                <a href="/pages/TelaPerfilUsuario.html" class="nav-link active">
-                    <img src="/public/icons/usuario-do-circulo.svg" alt="Meu Perfil" style="width: 20px;"> Meu Perfil
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="/pages/settings.html"
-                    class="nav-link text-white d-flex align-items-center gap-2 ">
-                    <i class="bi bi-gear-fill"></i> 
-                    Configurações
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="/pages/help.html"
-                    class="nav-link text-white d-flex align-items-center gap-2">
-                    <i class="bi bi-question-circle-fill"></i>
-                    Ajuda
-                </a>
-                </li>
-            </ul>
-            </div>
-        </div>
-    
-        <div class="flex-grow-1">
-            <!-- Header topo -->
-            <header class="d-flex justify-content-between align-items-center p-3">
-                <!-- Botão de abrir/fechar sidebar -->
-                <div class="d-flex align-items-center" >
-                <button id="toggleSidebar" class="d-none d-lg-flex btn btn-outline-success me-3">
-                    <i class="bi bi-list"></i> 
-                </button>
-                <button class="btn btn-outline-success me-3 d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
-                    <i class="bi bi-list"></i>
-                </button>
-                <h4 class="text-black d-flex align-items-center gap-2">
-                    <img src="/public/icons/usuario-do-circulo.svg" alt="Meu Perfil" style="width: 30px;">
-                    Meu Perfil
-                </h4>
-                </div>
-                <!-- Busca -->
-                <form id="headerSearchForm" class="input-group w-50">
-                <input type="search" class="form-control" placeholder="Buscar...">
-                <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
-                </form>
-                <div class="d-flex align-items-center">
-                <!-- Notificações -->
-                <button class="btn position-relative me-3">
-                    <i class="bi bi-bell fs-4"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
-                </button>
-                <!-- Perfil -->
-                <div class="dropdown">
-                    <a class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                    <img src="/public/icons/usuario-do-circulo.svg" alt="Perfil" class="rounded-circle me-2" style="width: 32px; height: 32px;">
-                    Usuário
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="/pages/TelaPerfilUsuario.html">Meu Perfil</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Sair</a></li>
-                    </ul>
-                </div>
-                </div>
-            </header>
-            
-            <div class="container d-flex justify-content-center align-items-center mt-5">
-                <div class="card shadow-lg p-4 rounded-4 w-100" style="max-width: 600px;">
-                    <h2 class="text-center mb-4 fw-bold">Meu Perfil</h2>
-                    <div id="perfilUsuario" class="mb-4"></div>
-                
-                    <div class="d-grid gap-2">
-                    <a href="/pages/TelaCartaoVacinaAtual.html" class="btn btn-primary">Ver Cartão de Vacina</a>
-                    <button class="btn btn-warning" onclick="editarDados()">Atualizar Dados</button>
-                    <button class="btn btn-secondary" onclick="alterarSenha()">Alterar Senha</button>
-                    <button class="btn btn-danger" onclick="logout()">Sair</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Modal Editar Dados -->
-            <div class="modal align-items-center justify-content-center" id="modalEditar" style="display: none;">
-                <div class="bg-white p-4 rounded shadow" style="max-width: 500px; width: 100%;">
-                <h5 class="mb-3">Editar Dados</h5>
-                <div class="mb-3">
-                    <input type="text" id="editNome" class="form-control" placeholder="Nome">
-                </div>
-                <div class="mb-3">
-                    <input type="email" id="editEmail" class="form-control" placeholder="Email">
-                </div>
-                <div class="mb-3">
-                    <input type="text" id="editCargo" class="form-control" placeholder="Cargo">
-                </div>
-                <div class="d-flex justify-content-end gap-2">
-                    <button class="btn btn-primary" onclick="salvarEdicao()">Salvar</button>
-                    <button class="btn btn-secondary" onclick="fecharModal('modalEditar')">Cancelar</button>
-                </div>
-                </div>
-            </div>
-            
-            <!-- Modal Alterar Senha -->
-            <div class="modal align-items-center justify-content-center" id="modalSenha" style="display: none;">
-                <div class="bg-white p-4 rounded shadow" style="max-width: 500px; width: 100%;">
-                <h5 class="mb-3">Alterar Senha</h5>
-                <div class="mb-3">
-                    <input type="password" id="senhaAtual" class="form-control" placeholder="Senha Atual">
-                </div>
-                <div class="mb-3">
-                    <input type="password" id="novaSenha" class="form-control" placeholder="Nova Senha">
-                </div>
-                <div class="mb-3">
-                    <input type="password" id="confirmaSenha" class="form-control" placeholder="Confirmar Nova Senha">
-                </div>
-                <div class="d-flex justify-content-end gap-2">
-                    <button class="btn btn-primary" onclick="salvarNovaSenha()">Alterar</button>
-                    <button class="btn btn-secondary" onclick="fecharModal('modalSenha')">Cancelar</button>
-                </div>
-                </div>
-            </div>
+            </li>
+        </ul>
         </div>
     </div>
+
+    <div class="flex-grow-1">
+      <!-- Header topo -->
+      <header class="d-flex justify-content-between align-items-center p-3">
+        <!-- Botão de abrir/fechar sidebar -->
+        <div class="d-flex align-items-center" >
+          <button id="toggleSidebar" class="d-none d-lg-flex btn btn-outline-success me-3">
+              <i class="bi bi-list"></i> 
+          </button>
+          <button class="btn btn-outline-success me-3 d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+              <i class="bi bi-list"></i>
+          </button>
+          <h4 class="text-black d-flex align-items-center gap-2">
+            <img src="/public/icons/chamine-de-casa-medica.svg" alt="Funcionários" style="width: 30px;">
+            Painel de Controle
+          </h4>
+        </div>
+        <!-- Busca -->
+        <form id="headerSearchForm" class="input-group w-50">
+          <input type="search" class="form-control" placeholder="Buscar...">
+          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+        <div class="d-flex align-items-center">
+          <!-- Dentro do seu header, substitua só a parte do botão de notificações por: -->
+          <button id="btnNotifications" class="btn position-relative me-3">
+            <i class="bi bi-bell fs-4"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+          </button>
+          <!-- Toasts de Notificação -->
+          <div class="position-fixed top-0 end-0 p-3" style="z-index: 1100;">
+            <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <i class="bi bi-bell-fill me-2"></i>
+                <strong class="me-auto">Notificações</strong>
+                <small class="text-muted" id="toastTime">agora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar"></button>
+              </div>
+              <div class="toast-body" id="toastBody">
+                <!-- Itens de notificação serão injetados aqui -->
+              </div>
+            </div>
+          </div>
+          <!-- Perfil -->
+          <div class="dropdown">
+              <a class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" href="#" data-bs-toggle="dropdown">
+              <img src="/public/icons/usuario-do-circulo.svg" alt="Perfil" class="rounded-circle me-2" style="width: 32px; height: 32px;">
+              Usuário
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="/pages/TelaPerfilUsuario.html">Meu Perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Sair</a></li>
+              </ul>
+          </div>
+        </div>
+      </header>
+            
+      <div class="container d-flex justify-content-center align-items-center mt-5">
+          <div class="card shadow-lg p-4 rounded-4 w-100" style="max-width: 600px;">
+              <h2 class="text-center mb-4 fw-bold">Meu Perfil</h2>
+              <div id="perfilUsuario" class="mb-4"></div>
+          
+              <div class="d-grid gap-2">
+              <a href="/pages/TelaCartaoVacinaAtual.html" class="btn btn-primary">Ver Cartão de Vacina</a>
+              <button class="btn btn-warning" onclick="editarDados()">Atualizar Dados</button>
+              <button class="btn btn-secondary" onclick="alterarSenha()">Alterar Senha</button>
+              <button class="btn btn-danger" onclick="logout()">Sair</button>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Modal Editar Dados -->
+      <div class="modal align-items-center justify-content-center" id="modalEditar" style="display: none;">
+          <div class="bg-white p-4 rounded shadow" style="max-width: 500px; width: 100%;">
+          <h5 class="mb-3">Editar Dados</h5>
+          <div class="mb-3">
+              <input type="text" id="editNome" class="form-control" placeholder="Nome">
+          </div>
+          <div class="mb-3">
+              <input type="email" id="editEmail" class="form-control" placeholder="Email">
+          </div>
+          <div class="mb-3">
+              <input type="text" id="editCargo" class="form-control" placeholder="Cargo">
+          </div>
+          <div class="d-flex justify-content-end gap-2">
+              <button class="btn btn-primary" onclick="salvarEdicao()">Salvar</button>
+              <button class="btn btn-secondary" onclick="fecharModal('modalEditar')">Cancelar</button>
+          </div>
+          </div>
+      </div>
+      
+      <!-- Modal Alterar Senha -->
+      <div class="modal align-items-center justify-content-center" id="modalSenha" style="display: none;">
+          <div class="bg-white p-4 rounded shadow" style="max-width: 500px; width: 100%;">
+          <h5 class="mb-3">Alterar Senha</h5>
+          <div class="mb-3">
+              <input type="password" id="senhaAtual" class="form-control" placeholder="Senha Atual">
+          </div>
+          <div class="mb-3">
+              <input type="password" id="novaSenha" class="form-control" placeholder="Nova Senha">
+          </div>
+          <div class="mb-3">
+              <input type="password" id="confirmaSenha" class="form-control" placeholder="Confirmar Nova Senha">
+          </div>
+          <div class="d-flex justify-content-end gap-2">
+              <button class="btn btn-primary" onclick="salvarNovaSenha()">Alterar</button>
+              <button class="btn btn-secondary" onclick="fecharModal('modalSenha')">Cancelar</button>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
     
-    <script type="module"  src="/js/user.js"></script>
-    <script type="module" src="/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module"  src="/js/user.js"></script>
+  <script type="module" src="/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
