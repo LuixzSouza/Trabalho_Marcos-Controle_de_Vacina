@@ -2,7 +2,15 @@
 
 O objetivo deste projeto é desenvolver um **sistema completo para a gestão de funcionários e o controle de vacinas**, contemplando as seguintes funcionalidades:
 
+
+![Dashboard do sistema](https://gerenciadordevacinas.netlify.app/coverImage.png)
+
 ## 🚀 Como rodar o projeto
+
+### 🧱 Requisitos
+
+- Node.js 18+
+- Navegador moderno (Chrome, Firefox, Edge...)
 
 ```bash
 # Acessar pasta do Projeto
@@ -49,7 +57,7 @@ Italo Andrade:
 - Node.js
 
 ### 💻 Acesse o site do projeto:
-👉 [Clique aqui para acessar o site](https://SEU-LINK-AQUI)
+👉 [Clique aqui para acessar o site](https://gerenciadordevacinas.netlify.app)
 
 ## 📅 Cronograma e Entregas
 
@@ -95,3 +103,19 @@ Luiz Antônio:
 - Desenvolvimento da tela de agendamento de vacina com validação de data.
 - Criação da tela para filtragem dos tipos de vacina, incluindo o tempo para a próxima aplicação.
 - Integração da API
+
+## ✨ Funcionalidades Principais
+
+- 👥 Cadastro, edição e exclusão de funcionários
+- 💉 Cadastro e filtragem de tipos de vacina
+- 📅 Agendamento de vacinas com validação de data futura
+- 📝 Registro de vacinas aplicadas com validação
+- 🧾 Cartão de vacina individual com histórico completo
+- 📊 Dashboard com indicadores e gráficos:
+  - Estoque baixo
+  - Próximas doses por vacina
+  - Quantidade de vacinas aplicadas
+  - Status geral de funcionários vacinados
+- 🗓️ Mini-calendário com destaque no dia atual
+- 🔍 Filtro e busca dinâmica em todas as telas
+- 🔁 Integração completa com API simulada (JSON Server)
